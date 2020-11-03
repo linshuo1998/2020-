@@ -1,0 +1,101 @@
+/* pages/editRecruitmentInfo/editRecruitmentInfo.wxss */
+._page{
+  height: 100%;
+  /* background-color: #07C160; */
+  /* background-color: black; */
+  /* display: flex;
+  flex-direction: column; */
+  /* height: 100vh; */
+  margin-top: 20rpx;
+  margin-bottom: 50rpx;
+}
+
+._body{
+  margin: 30rpx 30rpx;
+  background-color: whitesmoke;
+  border-top: 2rpx solid #999;
+  border-bottom: 4rpx solid #999;
+  border-left: 4rpx solid #999;
+  border-right: 2rpx solid #999;
+  /* border-top: 4rpx solid #07C160;
+  border-bottom: 4rpx solid #07C160; */
+  padding: 33rpx 10rpx;
+  border-radius: 30rpx;
+}
+.myPlaceholder{
+  color:#999;
+  font-size: 26rpx;
+}
+._body .row{
+  display: flex;
+}
+._body .row ._input{
+  padding-left: 10rpx;
+  flex:1;
+  border-bottom: 2rpx solid black;
+  margin-right: 10rpx;
+  margin-bottom: 30rpx;
+}
+._body .row ._textarea{
+  padding-left: 10rpx;
+  flex:1;
+  border-bottom: 2rpx solid black;
+  margin-right: 10rpx;
+  margin-bottom: 30rpx;
+  padding-top: 10rpx;
+}
+._body .row .getLoc{
+  padding-left: 10rpx;
+  flex:1;
+  border-bottom: 2rpx solid black;
+  margin-right: 10rpx;
+  margin-bottom: 30rpx;
+  display: flex;
+  height: 42rpx !important;
+  line-height: 42rpx !important;
+
+}
+._body .row .getTags{
+  padding-left: 10rpx;
+  flex:1;
+  border-bottom: 2rpx solid black;
+  margin-right: 10rpx;
+  margin-bottom: 30rpx;
+  display: flex;
+  height: 42rpx !important;
+  line-height: 42rpx !important;
+
+}
+
+._bottom{
+  /* flex:1; */
+  height: 200rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.tags{
+  /* background-color: tomato; */
+  margin: 0 33rpx;
+  margin-bottom: 33rpx;
+  padding-left: 20rpx;
+
+}
+.tag{
+  border-top: 2rpx solid orange;
+  border-bottom: 4rpx solid orange;
+  border-left: 4rpx solid orange;
+  border-right: 2rpx solid orange;
+  /* border: 2rpx solid orange; */
+  color:orange;
+  font-size: 26rpx;
+  border-radius: 10rpx;
+  margin-right: 20rpx;
+  /* margin-top: 20rpx; */
+  padding-top: 4rpx;
+  padding-bottom: 4rpx;
+  padding-left: 12rpx;
+  padding-right: 12rpx;
+}
+

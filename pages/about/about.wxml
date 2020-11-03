@@ -1,0 +1,25 @@
+<!--pages/about/about.wxml-->
+<view class="page">
+  <view class="header">
+    <image class="avatar" src="https://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83er4hRbE4q3Tjf4LEZbynibqTGibvOfpReq3XibOLeJ270SLAicCP24TgVq7tUyKibfibCDozPXYvgqd3wFg/132"/>
+  </view>
+  <view class="_body">
+    <scroll-view scroll-y="true" style="height: 100%;">
+    <block wx:for="{{_bodyText}}" wx:key="index">
+    <view class="title">
+      <text>{{item.title}}</text>
+    </view>
+    <view class="content">
+      <block wx:for="{{item.content}}" wx:key="index" wx:for-item="content">
+        <text space="emsp">{{content}}</text>
+      </block>
+    </view>
+    </block>
+  </scroll-view>
+  </view>
+  <view class="footer">
+    <text class="sentence">。。。</text>
+    <text class="date">2020-10-26</text>
+  </view>
+
+</view>

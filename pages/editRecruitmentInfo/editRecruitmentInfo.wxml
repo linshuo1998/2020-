@@ -1,0 +1,69 @@
+<!--pages/editRecruitmentInfo/editRecruitmentInfo.wxml-->
+<view class="_page">
+	<form bindreset="_formReset" bindsubmit="_formSubmit">
+		<view class="container">
+			
+			<view class="_body">
+				<view class="row">
+					<view style="color:red;width:4rpx;">*</view>
+					<text space="emsp">【标 题】</text>
+					<input name="title" class="_input" maxlength="12" placeholder="示例：初三男生招物理家教"  placeholder-class="myPlaceholder" bindblur="titleBlur"/>
+				</view>
+				<view class="row">
+					<view style="color:red;width:4rpx;">*</view>
+					<text space="emsp">【薪 酬】</text>
+					<input name="wage" class="_input" placeholder="示例：50元/小时"  placeholder-class="myPlaceholder"/>
+				</view>
+				<view class="row">
+					<view style="color:red;width:4rpx;">*</view>
+					<text space="emsp">【时 间】</text>
+					<input name="time" class="_input" placeholder="示例：周一到周五晚7点到9点" placeholder-class="myPlaceholder" bindblur="timeBlur"/>
+				</view>
+				<view class="row">
+					<view style="color:red;width:4rpx;">*</view>
+					<text space="emsp">【内 容】</text>
+					<textarea name="workDetail" class="_textarea"  id="wordDetail"  auto-height placeholder="示例：辅导初三物理，学生基础很差" placeholder-class="myPlaceholder"/>
+					<!-- <input class="_input"  placeholder="示例：辅导初三物理，学生基础很差，一直不及格" placeholder-class="myPlaceholder"/> -->
+				</view>
+				<view class="row">
+					<view style="color:red;width:4rpx;">*</view>
+					<text space="emsp">【要 求】</text>
+					<textarea name="need" class="_textarea"  id="need" auto-height placeholder="示例：要严格一点的男老师，物理要好" placeholder-class="myPlaceholder"/>
+					<!-- <input class="_input" placeholder="示例：要严格一点的男老师，物理要好" placeholder-class="myPlaceholder"/> -->
+				</view>
+				<view class="row">
+					<view style="color:red;width:4rpx;">*</view>
+					<text space="emsp">【电 话】</text>
+					<input name="phoneNumber" class="_input" type="number" placeholder="示例：13695101920" placeholder-class="myPlaceholder"/>
+				</view>
+				<view class="row">
+					<view style="width:4rpx;"> </view>
+					<text space="emsp">【微信号】</text>
+					<input name="wxNumber" class="_input" placeholder="示例：tel-13695101920" placeholder-class="myPlaceholder"/>
+				</view>
+
+				<view class="row">
+					<view style="color:red;width:4rpx;">*</view>
+					<text space="emsp">【位 置】</text>
+					<view class="getLoc" bindtap="_getLoc" >
+						<text wx:if="{{!curLocation}}" style="color:#999;font-size:26rpx;">轻触获取位置信息</text>
+						<text wx:else>{{curLocation.name}}</text>
+					</view>
+				</view>
+			
+				<view wx:if="{{tags.length>0}}" class="row">
+					<view style="width:4rpx;"> </view>
+					<text space="emsp">【标 签】</text>
+					<block wx:for="{{tags}}" wx:key="index" wx:for-item="tag">
+						<text class="tag">{{tag}}</text>
+					</block>
+				</view>
+			</view>
+
+		</view>
+		<view class="_bottom">
+				<button type="primary" form-type="submit">提交</button>
+				<button type="default" plain form-type="reset">清空</button>
+		</view>	
+	</form>
+</view>

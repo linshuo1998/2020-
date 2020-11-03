@@ -1,0 +1,12 @@
+<view class='container'>
+	<view class='_header'></view>
+	<view class='_body'>	
+		<button bindtap="watchRoute" type="primary">查看路线</button>
+	</view>
+	<view class='_bottom'></view>
+
+</view>
+
+
+
+

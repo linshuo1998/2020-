@@ -1,0 +1,46 @@
+<!--components/recuritmentInfo/recuitmentInfo.wxml-->
+  <view class="container {{isDelete?'deleteItem':''}}"  bindlongpress="_deleteItem" bindtouchend="_touchend" wx:if="{{status}}">
+    <view id="{{rInfos.id}}" bindtap="showDetail">
+      <view class="_header">
+        <text class="title">{{rInfos.title}}</text>
+        <text wx:if="{{rInfos.onCampus}}" class="onCampus">校内</text>
+        <text class="wage">{{rInfos.wage}}</text>
+      </view>
+      <view class="_body1">
+        <text class="iconfont icon-location"/>
+        <text class="address"> {{rInfos.address}}</text>
+      </view>
+      <view class="_body2">
+        <block wx:for="{{rInfos.tags}}" wx:for-item="_tag_" wx:key="index">
+          <text class="tag">{{_tag_}}</text>
+        </block>
+        <!-- <text class="detail">{{rInfos.detail}}</text> -->
+      </view>
+      <view class="_bottom ">
+        <view class="employer">
+          <image class="avatar" src="{{rInfos.avatar}}"/>
+          <text>{{rInfos.name}} 发布于 {{rInfos.publishTime}}</text>
+        </view>
+        <image src="{{open ? imgs.upArrow : imgs.downArrow}}" style="width:32rpx;height:32rpx;"></image>
+      </view>
+    </view>
+    <view class="detail" hidden="{{!open}}" wx:if="{{rInfos.phoneNumber!=null}}">
+      <text>【工作时间】{{rInfos.time}}</text>
+      <text>【工作薪酬】{{rInfos.wageDetail}}</text>
+      <text>【工作内容】{{rInfos.workDetail}}</text>
+      <text>【招聘要求】{{rInfos.need}}</text>
+      <text wx:if="{{rInfos.phoneNumber!=null}}">【联系电话】{{rInfos.phoneNumber}}</text>
+      <text wx:if="{{rInfos.wxNumber!=null}}">【微信号码】{{rInfos.wxNumber}}</text>
+      <text>【详细地址】{{rInfos.addressDetail}}</text>
+      <view class="detailChild">
+        <button wx:if="{{rInfos.wxNumber!=null}}" id="{{index}}" class="btn" type="primary" size="mini" plain bindtap="copy">复制微信号</button>
+        <button id="{{index}}" class="btn" type="primary" size="mini" plain bindtap="call">拨打电话</button>
+        <button id="{{index}}" class="btn" type="primary" size="mini" plain bindtap="showRoute">查看路线</button>
+      </view>
+    </view>
+    <view class="delIcon" hidden="{{!isDelete}}" bindtap="_delete">
+      <text class="iconfont icon-shanchu" style="font-size:40rpx;color:red;"></text>
+    </view>
+
+  </view>
+ 

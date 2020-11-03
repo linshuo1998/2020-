@@ -1,0 +1,24 @@
+<!--components/functions/functions.wxml-->
+<block wx:for="{{functions}}" wx:key="index">
+<view class="functionsBody">
+    <view class="title">
+      <text>{{item.title}}</text>
+    </view>
+    <view class="functions">
+      <block wx:for="{{item.function}}" wx:key="index" wx:for-item="func">
+      <button class="function" bindtap="{{!func.unusual?'changeTo':''}}" data-url="{{!func.unusual?func.url:''}}"
+      open-type="{{func.unusual?'contact':''}}">
+        <view class="_icon">
+          <text class="{{func.class}}"></text>
+        </view>
+        <view class="_text">
+          <text space="ensp">{{func.text}}</text>
+        </view>
+      
+      </button>
+      </block>
+</view>
+</view>
+</block>
+
+

@@ -1,0 +1,7 @@
+
+<button open-type="contact">
+  <view class="z">
+  <text class="iconfont icon-liulanlishi"></text>
+  <text>123</text>
+  </view>
+</button>

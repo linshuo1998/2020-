@@ -1,0 +1,144 @@
+{
+  "description": "项目配置文件",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": false,
+    "postcss": true,
+    "preloadBackgroundData": false,
+    "minified": true,
+    "newFeature": false,
+    "coverView": true,
+    "nodeModules": false,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "uglifyFileName": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "compileHotReLoad": false,
+    "useMultiFrameRuntime": false,
+    "useApiHook": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "useIsolateContext": true,
+    "useCompilerModule": true,
+    "userConfirmedUseCompilerModuleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": []
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.13.1",
+  "appid": "wx6900a736b6ae0638",
+  "projectname": "Recruitment_Platform",
+  "debugOptions": {
+    "hidedInDevtools": []
+  },
+  "scripts": {},
+  "isGameTourist": false,
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "condition": {
+    "search": {
+      "current": -1,
+      "list": []
+    },
+    "conversation": {
+      "current": -1,
+      "list": []
+    },
+    "plugin": {
+      "current": -1,
+      "list": []
+    },
+    "game": {
+      "current": -1,
+      "list": []
+    },
+    "gamePlugin": {
+      "current": -1,
+      "list": []
+    },
+    "miniprogram": {
+      "current": -1,
+      "list": [
+        {
+          "id": 0,
+          "name": "招聘信息",
+          "pathName": "pages/recruitmentInfo/recruitmentInfo",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "招聘详情",
+          "pathName": "pages/InfoDetail/InfoDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "路线规划",
+          "pathName": "pages/mapRoutePlan/mapRoutePlan",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "招聘申请",
+          "pathName": "pages/editRecruitmentInfo/editRecruitmentInfo",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "测试页面",
+          "pathName": "pages/test/test",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "获取用户信息",
+          "pathName": "pages/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "我的",
+          "pathName": "pages/mine/mine",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "关于",
+          "pathName": "pages/about/about",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "意见反馈",
+          "pathName": "pages/feedBack/feedBack",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "我的简历",
+          "pathName": "pages/myResume/myResume",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

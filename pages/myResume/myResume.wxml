@@ -1,0 +1,118 @@
+<!--pages/myResume/myResume.wxml-->
+<view class="page">
+  <view class="top"></view>
+  <view class="content">
+    <view class="left">
+      <view class="leftTop">
+        <view class="userinfo">
+        <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+        <block wx:else>
+          <image bindtap="bindViewTap" class="userinfo-avatar" src="{{avatar}}" mode="cover" bindtap="chooseImg"></image>
+        </block>
+        <view class="_text">
+          <text class="name">{{resume.name}}</text>
+          <text space="emsp" class="prefix">性  别：<text class="suffix">{{resume.gender}}</text></text>
+          <text space="emsp" class="prefix">民  族：<text class="suffix">{{resume.people}}</text></text>
+          <text space="emsp" class="prefix">出生年月：<text class="suffix">{{resume.birthday}}</text></text>
+          <text space="emsp" class="prefix">籍  贯：<text class="suffix">{{resume.nactivePlace}}</text></text>
+          <text space="emsp" class="prefix">专  业：<text class="suffix">{{resume.major}}</text></text>
+          <text space="emsp" class="prefix">健康状况：<text class="suffix">{{resume.status}}</text></text>
+          <text space="emsp" class="prefix">电话号码：<text class="suffix">{{resume.phoneNumber}}</text></text>
+          <text space="emsp" class="prefix">微信号码：<text class="suffix">{{resume.wxNumber}}</text></text>  
+        </view>
+       </view>
+      </view>
+      <view class="leftBottom">
+        <view class="items">
+        <view class="_title">
+          <text class="iconfont icon-PKrongyubang"></text>
+          <text space="ensp"> 荣誉奖项</text>
+        </view>
+        <scroll-view scroll-y style="height:160rpx">
+        <view class="_content"> 
+          <block wx:for="{{resume.awards}}" wx:for-item="award" wx:key="index">
+          <text>{{award}}</text>
+          </block>
+        </view>
+        </scroll-view>
+        </view>
+        <view class="items">
+        <view class="_title">
+          <text class="iconfont icon-drxx77"></text>
+          <text space="ensp"> 技能证书</text>
+        </view>
+        <scroll-view scroll-y style="height:160rpx">
+        <view class="_content"> 
+          <block wx:for="{{resume.skills}}" wx:for-item="skill" wx:key="index">
+            <text>{{skill}}</text>
+          </block>
+        </view>
+      </scroll-view>
+        </view>
+      </view>
+     
+    </view>
+
+    <view class="right">
+      <view class="items">
+        <view class="_title">
+          <text class="iconfont icon-drxx20"></text>
+          <text space="ensp"> 工作经历</text>
+        </view>
+        <scroll-view scroll-y style="height:220rpx">
+        <view class="_content"> 
+          <block wx:for="{{resume.workExps}}" wx:for-item="workExp" wx:key="index">
+            <text>{{workExp}}</text>
+           </block>
+        </view>
+        </scroll-view>
+      </view>
+
+      <view class="items">
+        <view class="_title">
+          <text class="iconfont icon-jiaoyu"></text>
+          <text space="ensp"> 教育经历</text>
+        </view>
+        <scroll-view scroll-y style="height:220rpx">
+        <view class="_content"> 
+          <block wx:for="{{resume.eduExps}}" wx:for-item="eduExp" wx:key="index">
+          <text>{{eduExp}}</text>
+          </block>
+          <text space="emsp">主修课程： <block wx:for="{{resume.majorSubjects}}" wx:for-item="majorSubject" wx:key="index">{{majorSubject}} </block>
+          </text>
+        </view>
+      </scroll-view>
+      </view>
+
+      <view class="items">
+        <view class="_title">
+          <text class="iconfont icon-xiaoyuan"></text>
+          <text space="ensp"> 校园活动</text>
+        </view>
+        <scroll-view scroll-y style="height:220rpx">
+        <view class="_content"> 
+          <block wx:for="{{resume.campusActivites}}" wx:for-item="campusActivite" wx:key="index">
+          <text>{{campusActivite}}</text>
+          </block>
+        </view>
+        </scroll-view>
+        
+      </view>
+
+      <view class="items">
+        <view class="_title">
+          <text class="iconfont icon-pingjia"></text>
+          <text space="ensp"> 自我评价</text>
+        </view>
+        <scroll-view scroll-y style="height:220rpx">
+        <view class="_content"> 
+          <text space="emsp">  {{resume.selfAssessment}}</text>
+        </view>
+        </scroll-view>
+      </view>
+
+    </view>
+  </view>
+
+  <view class="bottom"></view>
+</view>

@@ -1,0 +1,19 @@
+<!--pages/RecuritmentInfo/RecuritmentInfo.wxml-->
+
+<view class="_body">
+<view class="header"> 
+  <text space="ensp"></text>
+  <text class='iconfont icon-jintian'></text>
+  <text space="ensp"> {{curTime}} </text>
+</view>
+
+<view class="container">
+  <block wx:for="{{rInfos_}}" wx:key="id">
+    <r-Info rInfos="{{item}}" myLoc="{{myLoc_}}" openid="{{openid}}"/>
+  </block>
+</view>
+
+<view class="bottom" bindtap="clickAddBtn">
+    <image class="addIcon" src="/icons/add.png" bindtouchstart="changeColor" />
+</view>
+</view>
