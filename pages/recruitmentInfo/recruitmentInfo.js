@@ -11,12 +11,165 @@ Page({
       url: '/pages/editRecruitmentInfo/editRecruitmentInfo'
     })
   },
+  showInput: function () {
+    this.setData({
+        inputShowed: true
+    });
+},
+hideInput: function () {
+    this.setData({
+        inputVal: "",
+        inputShowed: false
+    });
+},
+clearInput: function () {
+    this.setData({
+        inputVal: ""
+    });
+},
+inputTyping: function (e) {
+    this.setData({
+        inputVal: e.detail.value
+    });
+},
 
   /**
    * 页面的初始数据
    */
   data: {
+    inputShowed: false,
+    inputVal: "",
     rInfos_:[
+      {
+        id:'1',
+        title:"初三男生物理家教",
+        // onCampus:true,
+        wage:"200元/天",
+        address:"雷阳区新民苑B405",
+        tags:['校内家教','长期','周末'],
+        avatar:"https://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83ertFdHCDf3XTWkv9a6HNkahu4NWYbbZPHkcfawhetmTTRHrMuT5oHw6m4BrMesVoCibmORibYEhj5XQ/132",
+        name:"林烁",
+        publishTime:"2020-10-22 12:24",
+        // open:false,
+        time:"即日起到期末每周三晚7点到9点",
+        wageDetail:"每小时80元",      //可删除
+        workDetail:"负责初三物理家教工作",
+        need:"要严格一点的男老师",
+        phoneNumber:"13695101920",
+        wxNumber:null,
+        addressDetail:"寸金街道岭南师范学院", //可删除
+        point:{
+          errMsg: "chooseLocation:ok",
+          name: "岭南师范学院图书馆",
+          address: "广东省湛江市赤坎区寸金路29号岭南师范学院",
+          latitude: 21.269188,
+          longitude: 110.348416}
+        
+      },
+      {
+        id:'1',
+        title:"初三男生物理家教",
+        // onCampus:true,
+        wage:"200元/天",
+        address:"雷阳区新民苑B405",
+        tags:['校内家教','长期','周末'],
+        avatar:"https://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83ertFdHCDf3XTWkv9a6HNkahu4NWYbbZPHkcfawhetmTTRHrMuT5oHw6m4BrMesVoCibmORibYEhj5XQ/132",
+        name:"林烁",
+        publishTime:"2020-10-22 12:24",
+        // open:false,
+        time:"即日起到期末每周三晚7点到9点",
+        wageDetail:"每小时80元",      //可删除
+        workDetail:"负责初三物理家教工作",
+        need:"要严格一点的男老师",
+        phoneNumber:"13695101920",
+        wxNumber:null,
+        addressDetail:"寸金街道岭南师范学院", //可删除
+        point:{
+          errMsg: "chooseLocation:ok",
+          name: "岭南师范学院图书馆",
+          address: "广东省湛江市赤坎区寸金路29号岭南师范学院",
+          latitude: 21.269188,
+          longitude: 110.348416}
+        
+      },
+      {
+        id:'1',
+        title:"初三男生物理家教",
+        // onCampus:true,
+        wage:"200元/天",
+        address:"雷阳区新民苑B405",
+        tags:['校内家教','长期','周末'],
+        avatar:"https://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83ertFdHCDf3XTWkv9a6HNkahu4NWYbbZPHkcfawhetmTTRHrMuT5oHw6m4BrMesVoCibmORibYEhj5XQ/132",
+        name:"林烁",
+        publishTime:"2020-10-22 12:24",
+        // open:false,
+        time:"即日起到期末每周三晚7点到9点",
+        wageDetail:"每小时80元",      //可删除
+        workDetail:"负责初三物理家教工作",
+        need:"要严格一点的男老师",
+        phoneNumber:"13695101920",
+        wxNumber:null,
+        addressDetail:"寸金街道岭南师范学院", //可删除
+        point:{
+          errMsg: "chooseLocation:ok",
+          name: "岭南师范学院图书馆",
+          address: "广东省湛江市赤坎区寸金路29号岭南师范学院",
+          latitude: 21.269188,
+          longitude: 110.348416}
+        
+      },
+      {
+        id:'1',
+        title:"初三男生物理家教",
+        // onCampus:true,
+        wage:"200元/天",
+        address:"雷阳区新民苑B405",
+        tags:['校内家教','长期','周末'],
+        avatar:"https://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83ertFdHCDf3XTWkv9a6HNkahu4NWYbbZPHkcfawhetmTTRHrMuT5oHw6m4BrMesVoCibmORibYEhj5XQ/132",
+        name:"林烁",
+        publishTime:"2020-10-22 12:24",
+        // open:false,
+        time:"即日起到期末每周三晚7点到9点",
+        wageDetail:"每小时80元",      //可删除
+        workDetail:"负责初三物理家教工作",
+        need:"要严格一点的男老师",
+        phoneNumber:"13695101920",
+        wxNumber:null,
+        addressDetail:"寸金街道岭南师范学院", //可删除
+        point:{
+          errMsg: "chooseLocation:ok",
+          name: "岭南师范学院图书馆",
+          address: "广东省湛江市赤坎区寸金路29号岭南师范学院",
+          latitude: 21.269188,
+          longitude: 110.348416}
+        
+      },
+      {
+        id:'1',
+        title:"初三男生物理家教",
+        // onCampus:true,
+        wage:"200元/天",
+        address:"雷阳区新民苑B405",
+        tags:['校内家教','长期','周末'],
+        avatar:"https://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83ertFdHCDf3XTWkv9a6HNkahu4NWYbbZPHkcfawhetmTTRHrMuT5oHw6m4BrMesVoCibmORibYEhj5XQ/132",
+        name:"林烁",
+        publishTime:"2020-10-22 12:24",
+        // open:false,
+        time:"即日起到期末每周三晚7点到9点",
+        wageDetail:"每小时80元",      //可删除
+        workDetail:"负责初三物理家教工作",
+        need:"要严格一点的男老师",
+        phoneNumber:"13695101920",
+        wxNumber:null,
+        addressDetail:"寸金街道岭南师范学院", //可删除
+        point:{
+          errMsg: "chooseLocation:ok",
+          name: "岭南师范学院图书馆",
+          address: "广东省湛江市赤坎区寸金路29号岭南师范学院",
+          latitude: 21.269188,
+          longitude: 110.348416}
+        
+      },
       {
         id:'1',
         title:"初三男生物理家教",

@@ -1,16 +1,15 @@
 {
   "pages":[
     "pages/recruitmentInfo/recruitmentInfo",
-    "pages/InfoDetail/InfoDetail",
     "pages/editRecruitmentInfo/editRecruitmentInfo",
     "pages/mine/mine",
     "pages/test/test",
-    "pages/index/index",
     "pages/myResume/myResume",
-    "pages/myPublished/myPublished", 
     "pages/browsingHistory/browsingHistory",
-    "pages/feedBack/feedBack",
-    "pages/about/about"
+    "pages/about/about",
+    "pages/seekerInfo/seekerInfo",
+    "pages/editResume/editResume",
+    "pages/myPublished/myPublished"
 
   ],
   "tabBar": {
@@ -23,11 +22,18 @@
       "selectedIconPath": "icons/recruitment(active).png"
     },
     {
+      "pagePath": "pages/seekerInfo/seekerInfo",
+      "text": "求职",
+      "iconPath": "icons/id.png",
+      "selectedIconPath": "icons/id(active).png"
+    },
+    {
       "pagePath": "pages/mine/mine",
       "text": "我的",
       "iconPath": "icons/mine.png",
       "selectedIconPath": "icons/mine(active).png"
-    }]
+    }
+    ]
   },
   "window":{
     "backgroundTextStyle":"light",

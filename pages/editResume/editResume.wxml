@@ -1,0 +1,106 @@
+<view class="_page">
+  <view class="title" bindtap="showDetail">
+    <text>基本信息</text>
+    <image src="{{open ? imgs.upArrow : imgs.downArrow}}" style="width:32rpx;height:32rpx;"></image>
+  </view>
+  <view class="content" hidden="{{!open}}">
+  <form>
+    <view class="row">
+      <view class="left">
+        <view style="color:red;width:4rpx;">*</view>
+        <view><text space="ensp"> 学号</text></view>
+      </view>
+      <view class="right">
+        <input placeholder="2017324230" />
+      </view>
+    </view>
+
+
+    <view class="row">
+      <view class="left">
+        <view style="color:red;width:4rpx;">*</view>
+        <view><text space="ensp"> 姓名</text></view>
+      </view>
+      <view class="right">
+        <input placeholder="林烁" />
+      </view>
+    </view>
+
+    
+    <view class="row">
+      <view class="left">
+        <view style="color:red;width:4rpx;">*</view>
+        <view><text space="ensp"> 性别</text></view>
+      </view>
+      <view class="right">
+        <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+          <view class="picker">
+            {{array[index]}}
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <view class="row">
+      <view class="left">
+        <view style="color:red;width:4rpx;">*</view>
+        <view><text space="ensp"> 籍贯</text></view>
+      </view>
+      <view class="right">
+        <input placeholder="广东揭阳" />
+        <!-- 后面可以改为多级piker -->
+      </view>
+    </view>
+
+
+    <view class="row">
+      <view class="left">
+        <view style="color:red;width:4rpx;">*</view>
+        <view><text space="ensp"> 出生日期</text></view>
+      </view>
+      <view class="right">
+        <picker mode="date" value="{{date}}" start="1995-09-01" end="2008-11-01" bindchange="bindDateChange">
+          <view class="picker">
+            {{date}}
+          </view>
+        </picker>
+      </view>
+    </view>
+
+
+    <view class="row">
+      <view class="left">
+        <view style="color:red;width:4rpx;">*</view>
+        <view><text space="ensp"> 专业</text></view>
+      </view>
+      <view class="right">
+        <input placeholder="计算机科学与技术" />
+        <!-- 后面可以改为多级piker -->
+      </view>
+    </view>
+
+
+    <view class="row">
+      <view class="left">
+        <view style="color:red;width:4rpx;">*</view>
+        <view><text space="ensp"> 联系电话</text></view>
+      </view>
+      <view class="right">
+        <input placeholder="13695101920" />
+      </view>
+    </view>
+
+    <view class="row">
+      <view class="left">
+        <view style="color:red;width:4rpx;">*</view>
+        <view><text space="ensp"> 微信号</text></view>
+      </view>
+      <view class="right">
+        <input placeholder="tel-13695101920" />
+      </view>
+    </view>
+
+  </form>
+</view>
+
+</view>

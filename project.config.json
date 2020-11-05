@@ -78,20 +78,6 @@
         },
         {
           "id": -1,
-          "name": "招聘详情",
-          "pathName": "pages/InfoDetail/InfoDetail",
-          "query": "",
-          "scene": null
-        },
-        {
-          "id": -1,
-          "name": "路线规划",
-          "pathName": "pages/mapRoutePlan/mapRoutePlan",
-          "query": "",
-          "scene": null
-        },
-        {
-          "id": -1,
           "name": "招聘申请",
           "pathName": "pages/editRecruitmentInfo/editRecruitmentInfo",
           "query": "",
@@ -127,15 +113,37 @@
         },
         {
           "id": -1,
-          "name": "意见反馈",
-          "pathName": "pages/feedBack/feedBack",
+          "name": "我的简历",
+          "pathName": "pages/myResume/myResume",
           "query": "",
           "scene": null
         },
         {
           "id": -1,
-          "name": "我的简历",
-          "pathName": "pages/myResume/myResume",
+          "name": "求职人员",
+          "pathName": "pages/seekerInfo/seekerInfo",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "浏览历史",
+          "pathName": "pages/browsingHistory/browsingHistory",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "填写个人信息",
+          "pathName": "pages/editResume/editResume",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "我的招聘",
+          "pathName": "pages/myPublished/myPublished",
+          "query": "",
           "scene": null
         }
       ]

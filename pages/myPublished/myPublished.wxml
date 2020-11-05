@@ -1,2 +1,7 @@
 <!--pages/myPublished/myPublished.wxml-->
-<text>pages/myPublished/myPublished.wxml</text>
+<view class="_page">
+  <recruitment/>
+  <view class="bottom" bindtap="clickAddBtn">
+    <image class="addIcon" src="/icons/add.png" />  
+  </view>
+</view>

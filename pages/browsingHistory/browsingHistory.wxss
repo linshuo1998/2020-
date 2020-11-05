@@ -1,1 +1,60 @@
 /* pages/browsingHistory/browsingHistory.wxss */
+._page{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: whitesmoke;
+  min-height: 100vh;
+}
+._page .content{
+  flex:1;
+}
+._page .content .title{
+  /* background-color: blue; */
+  padding-bottom: 20rpx;
+  margin: 0 20rpx;
+  margin-top: 10rpx;
+  border-bottom: 2rpx solid #999;
+  color:#666;
+  font-size: 30rpx;
+  font-weight: bold;
+}
+
+
+
+
+.fixedFooter{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  /* background-color: black; */
+
+  /* height: 60rpx; */
+  
+}
+.fixedFooter .options{
+  /* margin-top: 10rpx; */
+  background-color: black;
+  display: flex;
+  /* justify-content: space-around; */
+  justify-content: center;
+  
+}
+ .fixedFooter .options .option{
+  width: 256rpx;
+  height: 88rpx;
+  /* border:  1rpx solid yellow; */
+  opacity: 1;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+}
+
+ .fixedFooter .options .optionClick{
+  background-color: rgba(255,255,255,0.2);
+}
+ .fixedFooter .options .option text{
+  line-height: 88rpx;
+  color:white;
+
+}

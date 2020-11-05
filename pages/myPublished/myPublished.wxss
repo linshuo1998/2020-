@@ -1,1 +1,24 @@
 /* pages/myPublished/myPublished.wxss */
+._page{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: whitesmoke;
+  position: relative;
+}
+.bottom {
+  float: right;
+  margin-right: 30rpx;
+  z-index: 999;
+  position: fixed;
+  bottom: 20rpx;
+  right: 20rpx;
+  /* background-color: black; */
+}
+
+.bottom .addIcon {
+  width: 88rpx;
+  height: 88rpx;
+
+  /* z-index: 999; */
+}

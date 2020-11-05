@@ -1,29 +1,36 @@
-// pages/browsingHistory/browsingHistory.js
+// pages/editResume/editResume.js
+import {CDN_PATH,KEY, REFERER,APIPRRFIX} from '../../config/appConfig';
 Page({
-  chooseOption:function(e){
-    console.log(e)
-    if(e.currentTarget.id=="_1"){
-      this.setData({
-        showRecruitment:true,
-        showSeeker:false,
-
-      })
-    }
-    else if(e.currentTarget.id=="_2"){
-      this.setData({
-        showRecruitment:false,
-        showSeeker:true,
-      })
-    }
-   
+  bindPickerChange: function(e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      index: e.detail.value
+    })
   },
-  
+  bindDateChange: function(e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      date: e.detail.value
+    })
+  },
+  showDetail:function(){
+    this.setData({
+      open:!this.data.open
+    })
+  },
   /**
    * 页面的初始数据
    */
   data: {
-    showRecruitment:true,
-    showSeeker:false,
+    array: ['男', '女'],
+    index:0,
+    date: '2016-09-01',
+    open:false,
+    imgs: {
+			downArrow: `${CDN_PATH}/iconArrowDown@3x.png`,
+			upArrow: `${CDN_PATH}/iconArrowUp@3x.png`,
+			rightArrow: `${CDN_PATH}/iconArrowRight@3x.png`,
+    },
   },
 
   /**

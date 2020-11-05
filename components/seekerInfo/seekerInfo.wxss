@@ -1,0 +1,200 @@
+/* components/seekerInfo/seekerInfo.wxss */
+/* components/recuritmentInfo/recuitmentInfo.wxss */
+.container{
+  /* padding: 20rpx 20rpx; */
+  margin: 30rpx 30rpx;
+  background-color: whitesmoke;
+  /* background-color: #db070f; */
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  border-top: 2rpx solid #999;
+  border-bottom: 4rpx solid #999;
+  border-left: 4rpx solid #999;
+  border-right: 2rpx solid #999;
+  overflow: hidden;
+  border-radius: 30rpx;
+  position: relative; 
+}
+.container .content{
+  padding: 20rpx 20rpx;
+  flex:1;
+  display: flex;
+}
+
+.container .content .left{
+  /* display: flex;
+  flex-direction: column;
+  justify-items: center;
+  justify-content: center; */
+  /* background-color: yellow; */
+  padding-right: 20rpx;
+  /* padding-top: 20rpx; */
+}
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  /* margin: 20rpx; */
+  border-radius: 20rpx;
+  border-top: 2rpx solid #999;
+  border-bottom: 4rpx solid #999;
+  border-left: 4rpx solid #999;
+  border-right: 2rpx solid #999;
+}
+
+.container .content .right{
+  flex:1;
+  /* background-color: green; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+}
+.container .content .right text{
+  font-size: 24rpx;
+}
+
+.container .content .right .show{
+  min-height: 128rpx;
+  display: flex;
+  flex-direction: column;
+  /* background-color: aqua; */
+}
+.container .content .right .show text{
+  font-size: 18rpx;
+  color: #666;
+}
+.container .content .right .show .name{
+  font-size: 24rpx;
+  font-weight: bold;
+  padding-bottom: 10rpx;
+  color: #517083;
+  border-bottom: 1rpx solid #999 ;
+}
+.container .content .right .show ._text{
+  font-size: 18rpx;
+  /* font-weight: bold; */
+  padding: 10rpx 0;
+  color: #666;
+}
+.seeDetail{
+  display: flex;
+  /* justify-content: space-between; */
+  margin-top: 10rpx;
+  border-top: 1rpx dotted #bfbfbf;
+  padding-top: 10rpx;
+}
+.seeDetail .btn{
+flex:1;
+margin-right: 10rpx;
+font-size: 18rpx !important;
+font-weight: normal !important;
+color:#547d9d !important;
+border-color: #547d9d !important;
+}
+
+.container .fixedFooter{
+  background-color: #405f75;
+  /* height: 60rpx; */
+  
+}
+.container .fixedFooter .options{
+  margin-top: 10rpx;
+  background-color: #547d9d;
+  display: flex;
+  /* justify-content: space-around; */
+  justify-content: center;
+  
+}
+.container .fixedFooter .options .option{
+  width: 128rpx;
+  height: 64rpx;
+  /* border:  1rpx solid yellow; */
+  opacity: 1;
+  display: flex;
+  justify-content: center;
+}
+/* .container .fixedFooter .options .option:hover{
+  background-color: rgba(255,255,255,0.2);
+} */
+.container .fixedFooter .options .optionClick{
+  background-color: rgba(255,255,255,0.2);
+}
+.container .fixedFooter .options .option text{
+  line-height: 64rpx;
+  color:white;
+
+}
+/* 字体样式icon */
+@font-face {
+  font-family: 'iconfont';  /* project id 2142991 */
+  src: url('//at.alicdn.com/t/font_2142991_63z2cffsy2.eot');
+  src: url('//at.alicdn.com/t/font_2142991_63z2cffsy2.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_2142991_63z2cffsy2.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_2142991_63z2cffsy2.woff') format('woff'),
+  url('//at.alicdn.com/t/font_2142991_63z2cffsy2.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_2142991_63z2cffsy2.svg#iconfont') format('svg');
+}
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 27rpx;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-shanchu:before {
+  content: "\e625";
+}
+.icon-location:before {
+  content: "\e611";
+}
+
+.icon-icon-test:before {
+  content: "\e61b";
+}
+
+.icon-password:before {
+  content: "\e82b";
+}
+
+.icon-zhanghao:before {
+  content: "\e607";
+}
+
+.icon-password1:before {
+  content: "\e620";
+}
+
+.icon-account:before {
+  content: "\e627";
+}
+
+
+
+
+.deleteItem{
+  animation: shake 1s 0s infinite;
+}
+/* 关键帧动画实现抖动 */
+@keyframes shake{
+  0%,50%,100%{
+    transform: rotate(0deg);
+  }
+  10%,20%,30%{
+    transform: rotate(-2deg);
+  }
+  15%,25%,35%{
+    transform: rotate(2deg);
+  }
+  40%{
+    transform: rotate(-1deg);
+  }
+  45%{
+    transform: rotate(1deg);
+  }
+  }
+.container .delIcon{
+  position: absolute;
+  top: 0rpx;
+  right: 0rpx;
+}

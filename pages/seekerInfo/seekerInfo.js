@@ -1,29 +1,11 @@
-// pages/browsingHistory/browsingHistory.js
+// pages/seekerInfo/seekerInfo.js
 Page({
-  chooseOption:function(e){
-    console.log(e)
-    if(e.currentTarget.id=="_1"){
-      this.setData({
-        showRecruitment:true,
-        showSeeker:false,
 
-      })
-    }
-    else if(e.currentTarget.id=="_2"){
-      this.setData({
-        showRecruitment:false,
-        showSeeker:true,
-      })
-    }
-   
-  },
-  
   /**
    * 页面的初始数据
    */
   data: {
-    showRecruitment:true,
-    showSeeker:false,
+
   },
 
   /**

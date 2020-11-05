@@ -1,7 +1,5 @@
-<!--pages/RecuritmentInfo/RecuritmentInfo.wxml-->
-
-<view class="_body">
-  <view class="searchBar" >
+<!--pages/seekerInfo/seekerInfo.wxml-->
+<view class="searchBar" >
     <view class="weui-search-bar {{inputShowed ? 'weui-search-bar_focusing' : ''}}" id="searchBar">
         <form class="weui-search-bar__form">
           <view class="weui-search-bar__box">
@@ -17,23 +15,9 @@
               <view class="weui-search-bar__cancel-btn" bindtap="hideInput">取消</view>
       </view>
   </view>
-
-<view class="header"> 
-    <text space="ensp"></text>
-    <text class='iconfont icon-jintian'></text>
-    <text space="ensp"> {{curTime}} </text>
-</view>
-
-
-<view class="container">
-  <block wx:for="{{rInfos_}}" wx:key="id">
-    <r-Info rInfos="{{item}}" myLoc="{{myLoc_}}" openid="{{openid}}"/>
-  </block>
-</view>
-
-
+<seekerInfo/>
+<seekerInfo/>
+<seekerInfo/>
 <view class="bottom" bindtap="clickAddBtn">
-    <image class="addIcon" src="/icons/add.png" />  
-</view>
-
+    <image class="addIcon" src="/icons/add(active).png" />
 </view>

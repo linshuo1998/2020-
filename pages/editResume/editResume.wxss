@@ -1,0 +1,33 @@
+._page{
+  min-height: 100vh;
+  background-color: whitesmoke;
+}
+._page .title{
+  font-size: 36rpx;
+  background-color: white;
+  padding: 10rpx 20rpx;
+  margin-bottom: 4rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+._page .row{
+  display: flex;
+  align-items: center;
+  /* border-bottom: 1rpx solid #bfbfbf; */
+  padding: 10rpx 30rpx;
+  background-color: white;
+  margin-bottom: 4rpx;
+  /* margin-top:20rpx */
+}
+
+._page .row .left{
+  display: flex;
+  width: 24%;
+  
+}
+._page .row .right{
+  display: flex;
+  flex:1; 
+  
+}

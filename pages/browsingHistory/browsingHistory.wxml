@@ -1,2 +1,62 @@
 <!--pages/browsingHistory/browsingHistory.wxml-->
-<text>pages/browsingHistory/browsingHistory.wxml</text>
+<view class="_page">
+  <view class="content" wx:if="{{showRecruitment}}">
+    <view>
+      <view class="title">
+        <text>今天</text>
+      </view>
+      <view class="detail">
+        <recruitment/>
+      </view>
+     </view>
+     <view>
+      <view class="title">
+        <text>昨天</text>
+      </view>
+      <view class="detail">
+        <recruitment/>
+      </view>
+     </view>
+     <view>
+      <view class="title">
+        <text>更早</text>
+      </view>
+      <view class="detail">
+        <recruitment/>
+      </view>
+     </view>
+
+  </view>
+  <view  class="content" wx:if="{{showSeeker}}">
+    <view>
+      <view class="title">
+        <text>今天</text>
+      </view>
+      <view class="detail">
+        <seeker/>
+      </view>
+     </view>
+     <view>
+      <view class="title">
+        <text>昨天</text>
+      </view>
+      <view class="detail">
+        <seeker/>
+      </view>
+     </view>
+     <view>
+      <view class="title">
+        <text>更早</text>
+      </view>
+      <view class="detail">
+        <seeker/>
+      </view>
+     </view>
+  </view>
+  <view class="fixedFooter">
+      <view class="options">
+        <view class="option {{showRecruitment?'optionClick':''}}" bindtap="chooseOption" id="_1"><text space="emsp"> 招聘信息 </text></view>
+        <view class="option {{showSeeker?'optionClick':''}}" bindtap="chooseOption" id="_2"><text space="emsp"> 求职信息 </text></view>
+      </view>
+  </view>
+</view>
