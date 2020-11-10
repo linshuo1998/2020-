@@ -16,7 +16,15 @@
   /* z-index: 999; */
 }
 
-
+.searchBar{
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  top:0
+}
+.container{
+  padding-top: 108rpx;
+}
 
 
 

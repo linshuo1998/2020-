@@ -1,6 +1,12 @@
 <!--pages/myPublished/myPublished.wxml-->
 <view class="_page">
-  <recruitment/>
+  <view hidden="{{rInfos_}}" style="margin:50rpx auto">
+    <text>空空如也</text>
+  </view>
+  <block wx:for="{{rInfos_}}" wx:key="id">
+    <recruitment rInfos="{{item}}" myLoc="{{myLoc_}}" openid="{{openid}}" id_="{{item.id}}"/>
+  </block>
+  <!-- <recruitment/> -->
   <view class="bottom" bindtap="clickAddBtn">
     <image class="addIcon" src="/icons/add.png" />  
   </view>

@@ -14,6 +14,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    openid:null,
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
@@ -70,11 +71,13 @@ Page({
 
     if (app.globalData.openid!=null) {
       console.log("openid::",app.globalData.openid)
+      this.setData({openid:app.globalData.openid})
     } 
     else {
       app.checkLoginReadyCallback = res => {
         //登陆成功后自己希望执行的，和上面一样
         console.log("openid:::>>>",app.globalData.openid)
+        this.setData({openid:app.globalData.openid})
       }
    
   }

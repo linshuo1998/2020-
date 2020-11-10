@@ -7,7 +7,10 @@
         <text class="userinfo-nickname">{{userInfo.nickName}}</text>
       </block>
   </view>
-  <!-- <view class="functionsBody">
+
+  <functions functions="{{functions}}" openId="{{openid}}"/>
+
+    <!-- <view class="functionsBody">
     <view class="title">
       <text>兼职管理</text>
     </view>
@@ -75,5 +78,6 @@
 
     </view>
   </view> -->
-  <functions functions="{{functions}}"/>
 </view>
+
+

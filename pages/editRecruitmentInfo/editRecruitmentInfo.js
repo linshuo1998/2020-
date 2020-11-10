@@ -4,7 +4,7 @@ var util = require('../../utils/util');
 Page({
   _getLoc:function(){
     console.log(this.data.tags)
-    var old_tags = this.data.tags;
+   
     // console.log("xxx");
     wx.chooseLocation({
 			success: (res) => {
@@ -13,6 +13,47 @@ Page({
 					curLocation: res
         });
         var that = this;
+        if(this.data.published){
+          var old_tags = this.data.published.tags;
+          if(res.name!=null&&(res.name.indexOf("岭南师范学院")!=-1||res.name.indexOf("湛江师范学院")!=-1||res.name.indexOf("信勇自选商场")!=-1)){
+            for(var i=old_tags.length-1;i>=0;i--){
+              // console.log(old_tags[i]);
+              if(old_tags[i]=="校内"){
+                return
+              }
+              else if(old_tags[i]=="校外"){
+                old_tags.splice(i,1)
+              }
+            }
+            old_tags.unshift("校内");
+            let new_tags=old_tags;
+            // console.log("new_tags:",new_tags)
+            that.setData({
+              "published.tags": new_tags
+            })
+            // console.log("yes")
+            // console.log(that.data.tags)
+          }
+          else{
+            for(var i=old_tags.length-1;i>=0;i--){
+              console.log(old_tags[i]);
+              if(old_tags[i]=="校外"){
+                return
+              }
+              else if(old_tags[i]=="校内"){
+                old_tags.splice(i,1);
+              }
+            }
+            old_tags.unshift("校外");
+            let new_tags=old_tags;
+            // console.log("new_tags:",new_tags)
+            that.setData({
+              "published.tags": new_tags
+            })
+          }
+        }
+        else{
+        var old_tags = this.data.tags;
         if(res.name!=null&&(res.name.indexOf("岭南师范学院")!=-1||res.name.indexOf("湛江师范学院")!=-1||res.name.indexOf("信勇自选商场")!=-1)){
           for(var i=old_tags.length-1;i>=0;i--){
             // console.log(old_tags[i]);
@@ -49,7 +90,7 @@ Page({
             tags: new_tags
           })
         }
-       
+      }
         }
 			
 		});
@@ -129,6 +170,7 @@ Page({
     let addressDetail = this.data.curLocation.address
     let userOpenId = this.data.userOpenId
     let json_params = {
+      // "id":userOpenId+"_"+publishTime,    //id值
       'title':title,
       'wage':wage,
       'time':time,
@@ -142,9 +184,37 @@ Page({
       'avatar':avatarUrl,
       'address':address,
       'addressDetail':addressDetail,
-      'userOpenId':userOpenId
+      'userOpenId':userOpenId,
+      // 'tags':this.data.tags
     }
-    wx.request({
+    if(this.data.published){
+      json_params.id=this.data.index_;
+      json_params.tags=this.data.published.tags;
+      console.log("此时的tags",json_params)
+      wx.request({
+        url: 'http://localhost:8080/updateData',
+        method:"POST",
+        data:JSON.stringify(json_params),
+        success(res){
+          console.log("修改成功",res)
+          wx.showToast({
+            title: '修改成功'
+          })
+          wx.switchTab({
+            url: '/pages/recruitmentInfo/recruitmentInfo',
+            success:function(e){
+              // 刷新页面
+                let page = getCurrentPages().pop();
+                if (page == undefined || page == null) return;
+                    page.onLoad();
+            }
+          })
+        }
+      })
+    }
+    else{  
+      json_params.tags=this.data.tags
+      wx.request({
       url: 'http://localhost:8080/saveData',
       method:"POST",
       data:JSON.stringify(json_params),
@@ -163,16 +233,46 @@ Page({
           }
         })
       }
-    })
+    })}
+  
   },
   _formReset:function(e){
     console.log(e)
   },
   titleBlur:function(e){
-    var old_tags = this.data.tags;
+
     console.log(e.detail.value)
     let _title = e.detail.value
     var that = this;
+    if(this.data.published){
+      var old_tags = this.data.published.tags;
+      if(_title!=null&&_title!=""&&(_title.indexOf("家教")!=-1||_title.indexOf("辅导作业")!=-1||_title.indexOf("补习")!=-1||_title.indexOf("作业辅导")!=-1)){
+        for(var i=old_tags.length-1;i>=0;i--){
+          // console.log(old_tags[i]);
+          if(old_tags[i]=="家教"){
+            return
+          }
+        }
+        old_tags.unshift("家教");
+        let new_tags=old_tags;
+        that.setData({
+          "published.tags": new_tags
+        })
+      }
+      else{
+        for(var i=old_tags.length-1;i>=0;i--){
+         if(old_tags[i]=="家教"){
+            old_tags.splice(i,1);
+          }
+        }
+        let new_tags=old_tags;
+        that.setData({
+          "published.tags": new_tags
+        })
+      }
+    }
+    else{
+      var old_tags = this.data.tags;
     if(_title!=null&&_title!=""&&(_title.indexOf("家教")!=-1||_title.indexOf("辅导作业")!=-1||_title.indexOf("补习")!=-1||_title.indexOf("作业辅导")!=-1)){
       for(var i=old_tags.length-1;i>=0;i--){
         // console.log(old_tags[i]);
@@ -196,7 +296,7 @@ Page({
       that.setData({
         tags: new_tags
       })
-    }
+    }}
   },
   timeBlur:function(e){
     var old_tags = this.data.tags;
@@ -261,7 +361,9 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    userOpenId:null
+    userOpenId:null,
+    published:null,
+    index_:null
   },
 
   /**
@@ -294,6 +396,8 @@ Page({
         })
       }
       console.log(this.data.userInfo)
+
+
 // 获取openid
       if (app.globalData.openid!=null) {
         console.log("openid::",app.globalData.openid)
@@ -309,6 +413,28 @@ Page({
             userOpenId:app.globalData.openid
           })
         }}
+
+    // 判断是否有参数过来，有的话为修改，没有则有新增
+    let id = options.userOpenId
+    let id_ = options.id
+    this.setData({
+      index_:id_
+    })
+    let that = this;
+    if(id){
+      wx.request({
+        url: 'http://localhost:8080/findById',
+        method:"GET",
+        data:{id:id,id_:id_},
+        success(res){
+          console.log(res.data)
+          that.setData({
+            published:res.data,
+            curLocation:res.data.point
+          })
+        }
+      })
+    }
   },
 
   /**

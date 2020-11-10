@@ -76,6 +76,8 @@
   /* font-weight: bold; */
   padding: 10rpx 0;
   color: #666;
+  display: flex;
+  flex-direction: column;
 }
 .seeDetail{
   display: flex;

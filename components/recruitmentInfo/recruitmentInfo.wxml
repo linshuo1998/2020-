@@ -3,7 +3,7 @@
     <view id="{{rInfos.id}}" bindtap="showDetail">
       <view class="_header">
         <text class="title">{{rInfos.title}}</text>
-        <text wx:if="{{rInfos.onCampus}}" class="onCampus">校内</text>
+        <text wx:if="{{rInfos.tags}}" class="onCampus">{{rInfos.tags[0]}}</text>
         <text class="wage">{{rInfos.wage}}</text>
       </view>
       <view class="_body1">
@@ -26,11 +26,11 @@
     </view>
     <view class="detail" hidden="{{!open}}" wx:if="{{rInfos.phoneNumber!=null}}">
       <text>【工作时间】{{rInfos.time}}</text>
-      <text>【工作薪酬】{{rInfos.wageDetail}}</text>
+      <text>【工作薪酬】{{rInfos.wage}}</text>
       <text>【工作内容】{{rInfos.workDetail}}</text>
       <text>【招聘要求】{{rInfos.need}}</text>
-      <text wx:if="{{rInfos.phoneNumber!=null}}">【联系电话】{{rInfos.phoneNumber}}</text>
-      <text wx:if="{{rInfos.wxNumber!=null}}">【微信号码】{{rInfos.wxNumber}}</text>
+      <text wx:if="{{rInfos.phoneNumber}}">【联系电话】{{rInfos.phoneNumber}}</text>
+      <text wx:if="{{rInfos.wxNumber}}">【微信号码】{{rInfos.wxNumber}}</text>
       <text>【详细地址】{{rInfos.addressDetail}}</text>
       <view class="detailChild">
         <button wx:if="{{rInfos.wxNumber!=null}}" id="{{index}}" class="btn" type="primary" size="mini" plain bindtap="copy">复制微信号</button>
@@ -39,8 +39,10 @@
       </view>
     </view>
     <view class="delIcon" hidden="{{!isDelete}}" bindtap="_delete">
-      <text class="iconfont icon-shanchu" style="font-size:40rpx;color:red;"></text>
+      <text class="iconfont icon-shanchu" style="font-size:50rpx;color:red;"></text>
     </view>
-
+    <view class="editIcon" hidden="{{!isDelete}}" bindtap="_edit">
+      <text class="iconfont icon-bianji" style="font-size:50rpx;color:red;"></text>
+    </view>
   </view>
  

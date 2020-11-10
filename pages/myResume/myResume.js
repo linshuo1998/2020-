@@ -1,106 +1,142 @@
 // pages/myResume/myResume.js
 const app = getApp()
 Page({
-  chooseImg: function () {
-    var that = this;
-    // var childId = wx.getStorageSync("child_id");
-    // var token = wx.getStorageSync('token');
-    wx.chooseImage({
-      count: 1, // 最多可以选择的图片张数，默认9
-      sizeType: ['compressed'], // original 原图，compressed 压缩图，默认二者都有
-      sourceType: ['album', 'camera'], // album 从相册选图，camera 使用相机，默认二者都有
-      success: function (res) {
-        console.log(res.tempFilePaths + "修改页面")
-        var avatar = res.tempFilePaths;
-        console.log("新的图片路径为："+avatar)
-        that.setData({
-          avatar: avatar,
-          upAvatar: true
-        })
-      //将用户选择的图片转换为base64字符串存于数据库。
-      let imgUrl = 'data:image/png;base64,'+wx.getFileSystemManager().readFileSync(res.tempFilePaths[0], "base64");
-      console.log(imgUrl);
-      }
-    })
-
-  },
 
   /**
    * 页面的初始数据
    */
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    avatar: null,
-    resume:{
-      name:"林烁",
-      gender:"男",
-      people:"汉",
-      birthday:"1998-10-27",
-      nactivePlace:"广东揭阳",
-      major:"计算结科学与技术",
-      status:"健康",
-      phoneNumber:"13695101920",
-      wxNumber:"qq1530305292",
-      awards:['2018年12月 校三等奖学金','2019年12月 校三等奖学金','2020年6月 人工智能大赛二等奖'],
-      skills:["CET-4","CET-6"],
-      workExps:["1.基于评价情感倾向的房源推荐系统				2020年3月-5月","2.针对潮汕机场与湛江机场航线的票价查询系统		2020年6月"],
-      eduExps:["2017.9-2021.7		岭南师范学院		本科	"],
-      majorSubjects:['数据结构','离散数学' ,  '计算机组成原理' ,  'Linux基础',   '计算机网络' , '数据库原理'],
-      campusActivites:["2018.7				  三下乡活动"],
-      selfAssessment:"本人热爱学习，工作态度严谨认真，责任心强，有很好的团队合作能力。有良好的分析、解决问题的思维。以创新、解决客户需求、维护公司利益为宗旨。来接受挑战和更大的发展平台。"
+    mainInfo:null,
+    awards:null,
+    skills:null,
+    workExps:null,
+    eduExps:null,
+    courses:null,
+    activities:null,
+    selfEvaluation:null
+
+  },
 
 
-    }
-  },
-  bindViewTap: function () {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
-  getUserInfo: function (e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
-  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true,
-        avatar:app.globalData.userInfo.avatarUrl
-      })
-    } else if (this.data.canIUse) {
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true,
-          avatar:res.userInfo.avatarUrl
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true,
-            avatar:res.userInfo.avatarUrl
-          })
-        }
+    console.log(options.openid)
+    let openid = options.openid
+    let that = this
+    // 获取基本信息
+    wx.request({
+      url: 'http://localhost:8080/findMainInfo',
+      data:{"id":openid},
+      method: "GET",
+      success(res) {
+        console.log(res.data)
+        that.setData({
+          mainInfo: res.data,
       })
     }
+  })
+  // 获取荣誉奖项信息
+  wx.request({
+    url: 'http://localhost:8080/findAwardInfo',
+    data:{"id":openid},
+    method: "GET",
+    success(res) {
+      console.log(res.data)
+      that.setData({
+       awards: res.data.awards,
+    })
+    console.log(that.data.awards)
+  }
+})
+  // 获取技能证书信息
+  wx.request({
+    url: 'http://localhost:8080/findSkillInfo',
+    data:{"id":openid},
+    method: "GET",
+    success(res) {
+      console.log(res.data)
+      that.setData({
+       skills: res.data.skills,
+    })
+  }
+})
+// 获取工作经历信息
+wx.request({
+  url: 'http://localhost:8080/findWorkExpInfo',
+  data:{"id":openid},
+  method: "GET",
+  success(res) {
+    console.log(res.data)    
+    let workExps_ = res.data.workExps
+    for(var i=0;i<workExps_.length;i++){
+      workExps_[i].beginDate=workExps_[i].beginDate.replace(/-/g,".")
+      workExps_[i].endDate=workExps_[i].endDate.replace(/-/g,".")
+    }
+    that.setData({
+      workExps: workExps_,
+  })
+}
+})
+// 获取教育经历信息
+wx.request({
+  url: 'http://localhost:8080/findEduExpInfo',
+  data:{"id":openid},
+  method: "GET",
+  success(res) {
+    console.log(res.data)    
+    let eduExps_ = res.data.eduExps
+    for(var i=0;i<eduExps_.length;i++){
+      eduExps_[i].beginDate=eduExps_[i].beginDate.replace(/-/g,".")
+      eduExps_[i].endDate=eduExps_[i].endDate.replace(/-/g,".")
+    }
+    that.setData({
+      eduExps: eduExps_,
+  })
+}
+})
+// 获取主修课程信息
+wx.request({
+  url: 'http://localhost:8080/findCourseInfo',
+  data:{"id":openid},
+  method: "GET",
+  success(res) {
+    console.log(res.data)    
+    that.setData({
+      courses: res.data.courses
+  })
+}
+})
+//获取校园活动信息
+wx.request({
+  url: 'http://localhost:8080/findActivityInfo',
+  data:{"id":openid},
+  method: "GET",
+  success(res) {
+    let activities_ = res.data.activities
+    for(var i=0;i<activities_.length;i++){
+      activities_[i].beginDate= activities_[i].beginDate.replace(/-/g,".")
+      activities_[i].endDate= activities_[i].endDate.replace(/-/g,".")
+    }
+    console.log(res.data)    
+    that.setData({
+      activities: activities_
+  })
+}
+})
+// 获取自我评鉴信息
+wx.request({
+  url: 'http://localhost:8080/findSelfEvaluation',
+  data:{"id":openid},
+  method: "GET",
+  success(res) {
+    console.log(res.data)    
+    that.setData({
+      selfEvaluation: res.data.selfEvaluation
+  })
+}
+})
   },
 
   /**

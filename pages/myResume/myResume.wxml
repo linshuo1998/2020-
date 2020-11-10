@@ -4,23 +4,18 @@
   <view class="content">
     <view class="left">
       <view class="leftTop">
-        <view class="userinfo">
-        <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-        <block wx:else>
-          <image bindtap="bindViewTap" class="userinfo-avatar" src="{{avatar}}" mode="cover" bindtap="chooseImg"></image>
-        </block>
+        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{mainInfo.avatar}}" mode="cover" bindtap="chooseImg"></image>
         <view class="_text">
-          <text class="name">{{resume.name}}</text>
-          <text space="emsp" class="prefix">性  别：<text class="suffix">{{resume.gender}}</text></text>
-          <text space="emsp" class="prefix">民  族：<text class="suffix">{{resume.people}}</text></text>
-          <text space="emsp" class="prefix">出生年月：<text class="suffix">{{resume.birthday}}</text></text>
-          <text space="emsp" class="prefix">籍  贯：<text class="suffix">{{resume.nactivePlace}}</text></text>
-          <text space="emsp" class="prefix">专  业：<text class="suffix">{{resume.major}}</text></text>
-          <text space="emsp" class="prefix">健康状况：<text class="suffix">{{resume.status}}</text></text>
-          <text space="emsp" class="prefix">电话号码：<text class="suffix">{{resume.phoneNumber}}</text></text>
-          <text space="emsp" class="prefix">微信号码：<text class="suffix">{{resume.wxNumber}}</text></text>  
+          <text class="name">{{mainInfo.name}}</text>
+          <text space="emsp" class="prefix">性  别：<text class="suffix">{{mainInfo.gender}}</text></text>
+          <text space="emsp" class="prefix">民  族：<text class="suffix">{{mainInfo.people}}</text></text>
+          <text space="emsp" class="prefix">出生年月：<text class="suffix">{{mainInfo.birthday}}</text></text>
+          <text space="emsp" class="prefix">籍  贯：<text class="suffix">{{mainInfo.nactivePlace}}</text></text>
+          <text space="emsp" class="prefix">专  业：<text class="suffix">{{mainInfo.major}}</text></text>
+          <text space="emsp" class="prefix">健康状况：<text class="suffix">{{mainInfo.status}}</text></text>
+          <text space="emsp" class="prefix">电话号码：<text class="suffix">{{mainInfo.phoneNumber}}</text></text>
+          <text space="emsp" class="prefix">微信号码：<text class="suffix">{{mainInfoe.wxNumber}}</text></text>  
         </view>
-       </view>
       </view>
       <view class="leftBottom">
         <view class="items">
@@ -30,8 +25,8 @@
         </view>
         <scroll-view scroll-y style="height:160rpx">
         <view class="_content"> 
-          <block wx:for="{{resume.awards}}" wx:for-item="award" wx:key="index">
-          <text>{{award}}</text>
+          <block wx:for="{{awards}}" wx:for-item="award" wx:key="index">
+          <text space="emsp">{{award.getAwardDate}} {{award.awardName}}</text>
           </block>
         </view>
         </scroll-view>
@@ -43,8 +38,8 @@
         </view>
         <scroll-view scroll-y style="height:160rpx">
         <view class="_content"> 
-          <block wx:for="{{resume.skills}}" wx:for-item="skill" wx:key="index">
-            <text>{{skill}}</text>
+          <block wx:for="{{skills}}" wx:for-item="skill" wx:key="index">
+            <text space="emsp">{{skill.getSkillDate}} {{skill.skillName}}</text>
           </block>
         </view>
       </scroll-view>
@@ -61,8 +56,9 @@
         </view>
         <scroll-view scroll-y style="height:220rpx">
         <view class="_content"> 
-          <block wx:for="{{resume.workExps}}" wx:for-item="workExp" wx:key="index">
-            <text>{{workExp}}</text>
+          <block wx:for="{{workExps}}" wx:for-item="workExp" wx:key="index">
+            <text space="ensp">{{index+1}}. {{workExp.beginDate}}~{{workExp.endDate}}</text>
+            <text>{{workExp.work}}</text>
            </block>
         </view>
         </scroll-view>
@@ -75,10 +71,12 @@
         </view>
         <scroll-view scroll-y style="height:220rpx">
         <view class="_content"> 
-          <block wx:for="{{resume.eduExps}}" wx:for-item="eduExp" wx:key="index">
-          <text>{{eduExp}}</text>
+          <block wx:for="{{eduExps}}" wx:for-item="eduExp" wx:key="index">
+            <text space="emsp">{{eduExp.beginDate}}~{{eduExp.endDate}} {{eduExp.school}}</text>
           </block>
-          <text space="emsp">主修课程： <block wx:for="{{resume.majorSubjects}}" wx:for-item="majorSubject" wx:key="index">{{majorSubject}} </block>
+          <text>主修课程：</text>
+          <text space="emsp">
+            <block wx:for="{{courses}}" wx:for-item="course" wx:key="index">{{course.courseName}} </block>
           </text>
         </view>
       </scroll-view>
@@ -91,8 +89,9 @@
         </view>
         <scroll-view scroll-y style="height:220rpx">
         <view class="_content"> 
-          <block wx:for="{{resume.campusActivites}}" wx:for-item="campusActivite" wx:key="index">
-          <text>{{campusActivite}}</text>
+          <block wx:for="{{activities}}" wx:for-item="activity" wx:key="index">
+            <text space="ensp">{{index+1}}. {{activity.beginDate}}~{{activity.endDate}}</text>
+            <text>{{activity.activity}}</text>
           </block>
         </view>
         </scroll-view>
@@ -106,7 +105,7 @@
         </view>
         <scroll-view scroll-y style="height:220rpx">
         <view class="_content"> 
-          <text space="emsp">  {{resume.selfAssessment}}</text>
+          <text space="emsp">{{selfEvaluation}}</text>
         </view>
         </scroll-view>
       </view>

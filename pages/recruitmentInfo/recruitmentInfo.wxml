@@ -18,16 +18,16 @@
       </view>
   </view>
 
-<view class="header"> 
+<!-- <view class="header"> 
     <text space="ensp"></text>
     <text class='iconfont icon-jintian'></text>
     <text space="ensp"> {{curTime}} </text>
-</view>
+</view> -->
 
 
 <view class="container">
   <block wx:for="{{rInfos_}}" wx:key="id">
-    <r-Info rInfos="{{item}}" myLoc="{{myLoc_}}" openid="{{openid}}"/>
+    <r-Info rInfos="{{item}}" myLoc="{{myLoc_}}" openid="{{openid}}" id_="{{item.id}}"/>
   </block>
 </view>
 

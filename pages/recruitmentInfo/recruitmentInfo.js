@@ -7,7 +7,7 @@ Page({
 
   clickAddBtn:function(){
     console.log("填写新的招聘信息")
-    wx:wx.navigateTo({
+    wx.navigateTo({
       url: '/pages/editRecruitmentInfo/editRecruitmentInfo'
     })
   },

@@ -1,3 +1,8 @@
 {
-  "usingComponents": {}
+  "navigationBarTitleText": "个人信息",
+  "usingComponents": {
+    "littleForm":"/components/littleForm/littleForm",
+    "doubleDateForm":"/components/doubleDateForm/doubleDateForm",
+    "courseForm":"/components/moveForm/moveForm"
+  }
 }

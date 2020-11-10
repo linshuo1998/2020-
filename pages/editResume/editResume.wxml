@@ -1,106 +1,261 @@
 <view class="_page">
-  <view class="title" bindtap="showDetail">
-    <text>基本信息</text>
-    <image src="{{open ? imgs.upArrow : imgs.downArrow}}" style="width:32rpx;height:32rpx;"></image>
+
+  <view id="_0" class="title" bindtap="showDetail">
+   
+    <view><text style="color:red;">*</text><text space="ensp"> 基本信息</text></view>
+    <image src="{{open[0] ? imgs.upArrow : imgs.downArrow}}" style="width:32rpx;height:32rpx;"></image>
   </view>
-  <view class="content" hidden="{{!open}}">
-  <form>
-    <view class="row">
-      <view class="left">
-        <view style="color:red;width:4rpx;">*</view>
-        <view><text space="ensp"> 学号</text></view>
-      </view>
-      <view class="right">
-        <input placeholder="2017324230" />
-      </view>
-    </view>
-
-
-    <view class="row">
-      <view class="left">
-        <view style="color:red;width:4rpx;">*</view>
-        <view><text space="ensp"> 姓名</text></view>
-      </view>
-      <view class="right">
-        <input placeholder="林烁" />
-      </view>
-    </view>
-
-    
-    <view class="row">
-      <view class="left">
-        <view style="color:red;width:4rpx;">*</view>
-        <view><text space="ensp"> 性别</text></view>
-      </view>
-      <view class="right">
-        <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-          <view class="picker">
-            {{array[index]}}
+  <view class="content" hidden="{{!open[0]}}">
+    <form bindsubmit="saveMainInfo">
+      <view class="container">
+        <view class="l">
+          <view class="row">
+            <view class="left">
+              <view style="color:red;width:4rpx;">*</view>
+              <view><text space="ensp"> 学号</text></view>
+            </view>
+            <view class="right">
+              <input name="sno" type="number" placeholder="请输入学号" value="{{mainInfo.sno}}"/>
+            </view>
           </view>
-        </picker>
-      </view>
-    </view>
-
-    <view class="row">
-      <view class="left">
-        <view style="color:red;width:4rpx;">*</view>
-        <view><text space="ensp"> 籍贯</text></view>
-      </view>
-      <view class="right">
-        <input placeholder="广东揭阳" />
-        <!-- 后面可以改为多级piker -->
-      </view>
-    </view>
 
 
-    <view class="row">
-      <view class="left">
-        <view style="color:red;width:4rpx;">*</view>
-        <view><text space="ensp"> 出生日期</text></view>
-      </view>
-      <view class="right">
-        <picker mode="date" value="{{date}}" start="1995-09-01" end="2008-11-01" bindchange="bindDateChange">
-          <view class="picker">
-            {{date}}
+          <view class="row">
+            <view class="left">
+              <view style="color:red;width:4rpx;">*</view>
+              <view><text space="ensp"> 姓名</text></view>
+            </view>
+            <view class="right">
+              <input name="name" placeholder="请输入真实姓名" value="{{mainInfo.name}}" />
+            </view>
           </view>
-        </picker>
-      </view>
-    </view>
 
 
-    <view class="row">
-      <view class="left">
-        <view style="color:red;width:4rpx;">*</view>
-        <view><text space="ensp"> 专业</text></view>
+          <view class="row">
+            <view class="left">
+              <view style="color:red;width:4rpx;">*</view>
+              <view><text space="ensp"> 性别</text></view>
+            </view>
+            <view class="right">
+              <picker name="gender" bindchange="bindPickerChange" value="{{array[index]}}" range="{{array}}">
+                <view class="picker">
+                  {{array[index]}}
+                </view>
+              </picker>
+            </view>
+          </view>
+        </view>
+
+        <view class="r">
+          <image class="avatar"
+            src="{{avatar?avatar:'https://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83er4hRbE4q3Tjf4LEZbynibqTGibvOfpReq3XibOLeJ270SLAicCP24TgVq7tUyKibfibCDozPXYvgqd3wFg/132'}}"
+            mode="aspectFit" 
+            bindtap="chooseImg"/>
+        </view>
       </view>
-      <view class="right">
-        <input placeholder="计算机科学与技术" />
-        <!-- 后面可以改为多级piker -->
+
+      <view class="row">
+        <view class="left">
+          <view style="color:red;width:4rpx;">*</view>
+          <view><text space="ensp"> 民族</text></view>
+        </view>
+        <view class="right">
+          <input name="people" placeholder='请输入名族，如“汉”' value="{{mainInfo.people}}"/>
+          <!-- 后面可以改为piker -->
+        </view>
       </view>
-    </view>
+
+      <view class="row">
+        <view class="left">
+          <view style="color:red;width:4rpx;">*</view>
+          <view><text space="ensp"> 籍贯</text></view>
+        </view>
+        <view class="right">
+          <input name="nativePlace" placeholder="请输入籍贯" value="{{mainInfo.nativePlace}}"/>
+          <!-- 后面可以改为多级piker -->
+        </view>
+      </view>
 
 
-    <view class="row">
-      <view class="left">
-        <view style="color:red;width:4rpx;">*</view>
-        <view><text space="ensp"> 联系电话</text></view>
+      <view class="row">
+        <view class="left">
+          <view style="color:red;width:4rpx;">*</view>
+          <view><text space="ensp"> 出生日期</text></view>
+        </view>
+        <view class="right">
+          <picker name="birthday" mode="date" value="{{date}}" start="1995-09-01" end="2008-11-01" bindchange="bindDateChange">
+            <view class="picker">
+              {{date}}
+            </view>
+          </picker>
+        </view>
       </view>
-      <view class="right">
-        <input placeholder="13695101920" />
-      </view>
-    </view>
 
-    <view class="row">
-      <view class="left">
-        <view style="color:red;width:4rpx;">*</view>
-        <view><text space="ensp"> 微信号</text></view>
-      </view>
-      <view class="right">
-        <input placeholder="tel-13695101920" />
-      </view>
-    </view>
 
-  </form>
-</view>
+      <view class="row">
+        <view class="left">
+          <view style="color:red;width:4rpx;">*</view>
+          <view><text space="ensp"> 专业</text></view>
+        </view>
+        <view class="right">
+          <input name="major" placeholder="请输入专业全称" value="{{mainInfo.major}}"/>
+          <!-- 后面可以改为多级piker -->
+        </view>
+      </view>
 
+      <view class="row">
+        <view class="left">
+          <view style="color:red;width:4rpx;">*</view>
+          <view><text space="ensp"> 健康状况</text></view>
+        </view>
+        <view class="right">
+          <input name="health" placeholder="请输入健康状况" value="{{mainInfo.health}}"/>
+          <!-- 后面可以改为多级piker -->
+        </view>
+      </view>
+
+
+      <view class="row">
+        <view class="left">
+          <view style="color:red;width:4rpx;">*</view>
+          <view><text space="ensp"> 联系电话</text></view>
+        </view>
+        <view class="right">
+          <input name="phoneNumber" placeholder="请输入电话号码" value="{{mainInfo.phoneNumber}}"/>
+        </view>
+      </view>
+
+      <view class="row">
+        <view class="left">
+          <view style="color:red;width:4rpx;">*</view>
+          <view><text space="ensp"> 微信号</text></view>
+        </view>
+        <view class="right">
+          <input name="wxNumber" placeholder="请输入手机号码" value="{{mainInfo.wxNumber}}"/>
+        </view>
+      </view>
+      <button type="primary" style="width:100%"  form-type="submit">保存</button>
+    </form>
+  </view>
+
+
+  <view id="_1" class="title" bindtap="showDetail">
+    <view><text space="ensp">  荣誉奖项</text></view>
+    <image src="{{open[1] ? imgs.upArrow : imgs.downArrow}}" style="width:32rpx;height:32rpx;"></image>
+  </view>
+  <view class="content" hidden="{{!open[1]}}">
+    <form bindsubmit="saveAwardInfo">
+      <block wx:for="{{awards}}" wx:key="index">
+        <littleForm id="{{index}}" name="奖项名称" placeholder="请输入奖项名称" 
+        nameValue="{{item.awardName}}" dateValue="{{item.getAwardDate}}" 
+        dataType="awards" index_="{{index}}"
+          bind:getInput="getInput" bind:getDate="getDate" 
+          
+          data-type="awards" />
+      </block>
+      <button type="primary" style="width:100%" form-type="submit">保存</button>
+      <button type="default" style="width:100%" bindtap="add" data-type="awards">添加</button>
+
+    </form>
+  </view>
+
+
+  <view id="_2" class="title" bindtap="showDetail">
+    <view><text space="ensp">  技能证书</text></view>
+    <image src="{{open[2] ? imgs.upArrow : imgs.downArrow}}" style="width:32rpx;height:32rpx;"></image>
+  </view>
+  <view class="content" hidden="{{!open[2]}}">
+    <form bindsubmit="saveSkillInfo">
+      <block wx:for="{{skills}}" wx:key="index">
+        <littleForm id="{{index}}" name="证书名称" placeholder="请输入证书名称" bind:selectChange="_selectChange"
+          nameValue="{{item.skillName}}" dateValue="{{item.getSkillDate}}" 
+          dataType="skills" index_="{{index}}"
+          bind:getInput="getInput" bind:getDate="getDate" data-type="skills" />
+      </block>
+      <button type="primary" style="width:100%" form-type="submit">保存</button>
+      <button type="default" style="width:100%" bindtap="add" data-type="skills">添加</button>
+
+    </form>
+  </view>
+
+  <view id="_3" class="title" bindtap="showDetail">
+    <view><text style="color:red;">*</text><text space="ensp"> 工作经历</text></view>
+    <image src="{{open[3] ? imgs.upArrow : imgs.downArrow}}" style="width:32rpx;height:32rpx;"></image>
+  </view>
+  <view class="content" hidden="{{!open[3]}}">
+    <form bindsubmit="saveWorkExpInfo">
+      <block wx:for="{{workExps}}" wx:key="index">
+        <doubleDateForm id="{{index}}" name="工作内容" placeholder="请输入工作内容" nameValue="{{item.work}}"
+         beginDate_="{{item.beginDate}}" endDate_="{{item.endDate}}" index_="{{index}}" dataType="workExps"
+          bind:getInput="getInput" bind:getBeginDate="getBeginDate" bind:getEndDate="getEndDate" data-type="workExps" />
+      </block>
+      <button type="primary" style="width:100%" form-type="submit">保存</button>
+      <button type="default" style="width:100%" bindtap="add" data-type="workExps">添加</button>
+    </form>
+  </view>
+
+
+  <view id="_4" class="title" bindtap="showDetail">
+    <view><text space="ensp">  教育经历</text></view>
+    <image src="{{open[4] ? imgs.upArrow : imgs.downArrow}}" style="width:32rpx;height:32rpx;"></image>
+  </view>
+  <view class="content" hidden="{{!open[4]}}">
+    <form bindsubmit="saveEduExpInfo">
+      <block wx:for="{{eduExps}}" wx:key="index">
+        <doubleDateForm id="{{index}}" name="学校名称" placeholder="请输入学校名称"
+        nameValue="{{item.school}}" beginDate_="{{item.beginDate}}" endDate_="{{item.endDate}}" index_="{{index}}" dataType="eduExps"
+          bind:getInput="getInput" bind:getBeginDate="getBeginDate" bind:getEndDate="getEndDate" data-type="eduExps" />
+      </block>
+      <button type="primary" style="width:100%" form-type="submit">保存</button>
+      <button type="default" style="width:100%" bindtap="add" data-type="eduExps">添加</button>
+    </form>
+  </view>
+
+  <view id="_5" class="title" bindtap="showDetail">
+    <view><text space="ensp">  主修课程</text></view>
+    <image src="{{open[5] ? imgs.upArrow : imgs.downArrow}}" style="width:32rpx;height:32rpx;"></image>
+  </view>
+  <view class="content" hidden="{{!open[5]}}">
+    <form bindsubmit="saveCourseInfo" >
+      <block wx:for="{{courses}}" wx:key="index">
+        <courseForm id="{{index}}" name="课程名称" placeholder="请输入课程名称" bind:getInput="getInput" data-type="course"
+        nameValue="{{item.courseName}}" index_="{{index}}" dataType="course"/>
+      </block>
+      <button type="primary" style="width:100%" form-type="submit">保存</button>
+      <button type="default" style="width:100%" bindtap="add" data-type="course">添加</button>
+    </form>
+  </view>
+
+  <view id="_6" class="title" bindtap="showDetail">
+    <view><text space="ensp">  校园活动</text></view>
+    <image src="{{open[6] ? imgs.upArrow : imgs.downArrow}}" style="width:32rpx;height:32rpx;"></image>
+  </view>
+  <view class="content" hidden="{{!open[6]}}">
+    <form bindsubmit="saveActivityInfo">
+      <block wx:for="{{activities}}" wx:key="index">
+        <doubleDateForm id="{{index}}" name="内容描述" placeholder="请输入内容描述" bind:selectChange="_selectChange"
+          bind:getInput="getInput" bind:getBeginDate="getBeginDate" bind:getEndDate="getEndDate"
+          nameValue="{{item.activity}}" beginDate_="{{item.beginDate}}" endDate_="{{item.endDate}}" index_="{{index}}" dataType="activities"
+          data-type="activities" />
+      </block>
+      <button type="primary" style="width:100%" form-type="submit">保存</button>
+      <button type="default" style="width:100%" bindtap="add" data-type="activities">添加</button>
+    </form>
+  </view>
+
+  <view id="_7" class="title" bindtap="showDetail">
+    <view><text style="color:red;">*</text><text space="ensp"> 自我评鉴</text></view>
+    <image src="{{open[7] ? imgs.upArrow : imgs.downArrow}}" style="width:32rpx;height:32rpx;"></image>
+  </view>
+  <view class="content" hidden="{{!open[7]}}">
+    <form bindsubmit="saveSelfEvaluation">
+      <textarea name="selfEvaluation" id="selfEvaluation" placeholder="请输入自评内容" value="{{selfEvaluationFlag}}" class="_textarea" />
+      <button type="primary" style="width:100%" form-type="submit">保存</button>
+    </form>
+  </view>
+
+
+  <view style="padding:77rpx 0">
+  <button type="warn" plain bindtap="getResume">生成简历</button>
+  </view>
 </view>

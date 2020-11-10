@@ -1,55 +1,63 @@
 <!--pages/browsingHistory/browsingHistory.wxml-->
 <view class="_page">
   <view class="content" wx:if="{{showRecruitment}}">
-    <view>
+    <view wx:if="{{today_recruitmentInfo.length>0}}">
       <view class="title">
         <text>今天</text>
       </view>
       <view class="detail">
-        <recruitment/>
+        <block wx:for="{{today_recruitmentInfo}}" wx:key="id">
+          <recruitment rInfos="{{item}}" myLoc="{{myLoc_}}" openid="{{openId}}" id_="{{item.id}}"/>
+        </block>
       </view>
      </view>
-     <view>
+     <!-- <view>
       <view class="title">
         <text>昨天</text>
       </view>
       <view class="detail">
         <recruitment/>
       </view>
-     </view>
-     <view>
+     </view> -->
+     <view wx:if="{{ago_recruitmentInfo.length>0}}">
       <view class="title">
         <text>更早</text>
       </view>
       <view class="detail">
-        <recruitment/>
+        <block wx:for="{{ago_recruitmentInfo}}" wx:key="id">
+          <recruitment rInfos="{{item}}" myLoc="{{myLoc_}}" openid="{{openId}}" id_="{{item.id}}"/>
+        </block>
       </view>
      </view>
 
   </view>
   <view  class="content" wx:if="{{showSeeker}}">
-    <view>
+    <view wx:if="{{today_seekerInfo.length>0}}">
       <view class="title">
         <text>今天</text>
       </view>
       <view class="detail">
-        <seeker/>
+        <block wx:for="{{today_seekerInfo}}" wx:key="index">
+          <seeker _data="{{item}}" openid="{{openid}}"/>
+        </block>
       </view>
      </view>
-     <view>
+     <!-- <view>
       <view class="title">
         <text>昨天</text>
       </view>
       <view class="detail">
         <seeker/>
       </view>
-     </view>
-     <view>
+     </view> -->
+     <view wx:if="{{ago_seekerInfo.length>0}}">
       <view class="title">
         <text>更早</text>
       </view>
       <view class="detail">
-        <seeker/>
+        <block wx:for="{{ago_seekerInfo}}" wx:key="index">
+          <seeker _data="{{item}}" openid="{{openid}}"/>
+        </block>
       </view>
      </view>
   </view>

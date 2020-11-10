@@ -1,0 +1,20 @@
+<!--components/moveForm/moveForm.wxml-->
+<view class="container">
+  <movable-area class="m-area">
+    <movable-view id="{{index}}" class="m-view" direction="horizontal" x="{{isOpen?'-146rpx':'0'}}"
+      bindtouchstart="_tStart" bindtouchend="_tEnd">
+      <view class="row">
+        <view class="left">
+          <view style="color:red;width:4rpx;">*</view>
+          <view><text space="ensp"> {{name}}</text></view>
+        </view>
+        <view class="right">
+          <input id="{{index}}" placeholder="{{placeholder}}" value="{{nameValue}}" bindinput="input_" />
+        </view>
+      </view>
+    </movable-view>
+  </movable-area>
+  <button type="warn" size="mini" class="btn" bindtap="delete">
+    删除
+  </button>
+</view>

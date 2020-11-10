@@ -1,6 +1,6 @@
 /* pages/RecuritmentInfo/RecuritmentInfo.wxss */
 .container{
-  padding-top: 46rpx;
+  padding-top: 108rpx;
 }
 
 .bottom {
@@ -12,6 +12,7 @@
   right: 20rpx;
   /* background-color: black; */
 }
+
 
 .bottom .addIcon {
   width: 88rpx;
@@ -53,6 +54,12 @@
   font-size: 26rpx;
   /* line-height: 50rpx; */
 
+}
+
+.searchBar{
+  z-index: 999;
+  position: fixed; 
+  width: 100%;
 }
 
 

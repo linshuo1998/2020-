@@ -23,11 +23,64 @@
 
 ._page .row .left{
   display: flex;
-  width: 24%;
+  width: 200rpx !important;
   
 }
 ._page .row .right{
   display: flex;
   flex:1; 
   
+}
+
+.container{
+  display: flex;
+}
+
+.m-area{
+  flex: 1;
+}
+.m-view{
+  width: 100vw;
+  z-index: 999;
+}
+.btn{
+  width:146rpx !important;
+  line-height:72rpx !important;
+  height: 72rpx !important;
+  /* font-size: 24rpx !important; */
+  color:red !important;
+  background-color: whitesmoke !important;
+  
+}
+._textarea{
+  padding: 0rpx 20rpx;
+  /* margin-bottom: 4rpx; */
+  width: 100%;
+  background-color: white;
+}
+
+
+._page .container{
+  display: flex;
+
+}
+._page .container .l{
+  flex:1;
+}
+._page .container .r{
+  background-color: tomato;
+  display: flex;
+  align-items: center;
+  padding: 0 20rpx;
+  background-color: white;
+  /* border: 2rpx solid black; */
+}
+.avatar {
+  width: 150rpx;
+  height: 200rpx;
+  border-radius: 20rpx;
+  border-top: 2rpx solid #bfbfbf;
+  border-bottom: 8rpx solid #bfbfbf;
+  border-left: 8rpx solid #bfbfbf;
+  border-right: 2rpx solid #bfbfbf;
 }

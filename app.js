@@ -9,10 +9,13 @@ App({
     // 登录
     wx.login({
       success: res => {
+        console.log("登录成功")
+        console.log(res.code)
         let that = this
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         if (res.code) {
           //发起网络请求
+          console.log("正在请求。。")
           wx.request({
             url: 'http://localhost:8080/getOpenId',
             data: {
@@ -26,10 +29,12 @@ App({
                 that.checkLoginReadyCallback(res);
               }
             }
+           
             
           }
+          
           )
-         
+          console.log("失败了") 
         }else {
           console.log('登录失败！' + res.errMsg)
         }

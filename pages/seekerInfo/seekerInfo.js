@@ -1,18 +1,59 @@
 // pages/seekerInfo/seekerInfo.js
+const app = getApp()
 Page({
+  clickAddBtn:function(){
+    console.log("填写新的个人信息")
+    wx.navigateTo({
+      url: '/pages/editResume/editResume?openid='+this.data.openid
+    })
+  },
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    results:null,
+    openid:null,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    if (app.globalData.openid!=null) {
+      console.log("openid::",app.globalData.openid)
+      this.setData({
+        openid:app.globalData.openid
+      })
+    } 
+    else {
+      app.checkLoginReadyCallback = res => {
+        //登陆成功后自己希望执行的，和上面一样
+        console.log("openid:::>>>",app.globalData.openid)
+        this.setData({
+          openid:app.globalData.openid
+        })
+      }}
+    
+    let that = this;
+    wx.request({
+      url: 'http://localhost:8080/getAllSeekerInfo',
+      method:"GET",
+      success(res){
+        console.log(res.data)
+        let data_ = res.data
+        // for(var i=0;i<data_.length;i++){
+        //   for(var j=0;j<data_[i].WorkExpInfo.length;j++){
+        //   data_[i].WorkExpInfo[j].beginDate=data_[i].WorkExpInfo[j].replace(/-/g,".")
+        //   data_[i].WorkExpInfo[j].endDate=data_[i].WorkExpInfo[j].endDate.replace(/-/g,".")
+        // }
+        // }
+        console.log(data_)
+        that.setData({
+          results:data_
+        })
+      }
+    })
   },
 
   /**

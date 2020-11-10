@@ -7,6 +7,10 @@ Component({
     functions:{
       type:Array,
       value:[]
+    },
+    openId:{
+      type:String,
+      value:""
     }
   },
 
@@ -24,6 +28,15 @@ Component({
       console.log(e);
       
       let url = e.currentTarget.dataset.url;
+      if(url=="/pages/myResume/myResume"){
+        url = url+"?openid="+this.data.openId
+      }
+      if(url=="/pages/myPublished/myPublished"){
+        url = url+"?openid="+this.data.openId
+      }
+      if(url=="/pages/browsingHistory/browsingHistory"){
+        url = url+"?openid="+this.data.openId
+      }
       wx.navigateTo({
         url: url
       })

@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "littleForm":"/components/littleForm/littleForm",
+    "doubleDate":"/components/doubleDateForm/doubleDateForm"
+  }
 }
