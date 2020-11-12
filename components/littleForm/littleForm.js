@@ -37,7 +37,8 @@ Component({
    * 组件的初始数据
    */
   data: {
-    date: curDate
+    date: "1999-01-01",
+    curDate:curDate
   },
 
   /**
@@ -90,7 +91,7 @@ Component({
     }
     let openid = fatherPage.data.openid
     wx.request({
-      url: 'http://localhost:8080/updateAwardInfo',
+      url: 'https://www.linshuo.top:1998/updateAwardInfo',
       method:"POST",
       data:JSON.stringify({
         "openId":openid,
@@ -113,7 +114,7 @@ Component({
     }
     let openid = fatherPage.data.openid
     wx.request({
-      url: 'http://localhost:8080/updateSkillInfo',
+      url: 'https://www.linshuo.top:1998/updateSkillInfo',
       method:"POST",
       data:JSON.stringify({
         "openId":openid,

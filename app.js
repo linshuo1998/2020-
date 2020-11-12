@@ -17,7 +17,7 @@ App({
           //发起网络请求
           console.log("正在请求。。")
           wx.request({
-            url: 'http://localhost:8080/getOpenId',
+            url: 'https://www.linshuo.top:1998/getOpenId',
             data: {
               code: res.code
             },

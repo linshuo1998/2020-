@@ -42,7 +42,7 @@ Page({
     this.setData({openId:options.openid})
     let that = this;
     wx.request({
-      url: 'http://localhost:8080/findBrowsingHistoryById',
+      url: 'https://www.linshuo.top:1998/findBrowsingHistoryById',
       data:{
         "openId":that.data.openId,
         "type":"Recruitment"
@@ -79,7 +79,7 @@ Page({
       }
     })
     wx.request({
-      url: 'http://localhost:8080/findBrowsingHistoryById',
+      url: 'https://www.linshuo.top:1998/findBrowsingHistoryById',
       data:{
         "openId":that.data.openId,
         "type":"SeekerInfo"

@@ -26,7 +26,7 @@ Page({
       this.setData({openid:options.openid})
       let that = this
       wx.request({
-        url: 'http://localhost:8080/MyPublished',
+        url: 'https://www.linshuo.top:1998/MyPublished',
         data:{
           id:that.data.openid
         },
@@ -44,7 +44,7 @@ Page({
     //     this.setData({openid:app.globalData.openid})
     //     let that = this
     //     wx.request({
-    //       url: 'http://localhost:8080/MyPublished',
+    //       url: 'https://www.linshuo.top:1998/MyPublished',
     //       data:{
     //         id:that.data.openid
     //       },

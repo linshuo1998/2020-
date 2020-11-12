@@ -57,7 +57,7 @@ Component({
         console.log(this.data.rInfos)
         let that = this;
         wx.request({
-          url: 'http://localhost:8080/checkSaveOrUpdate',
+          url: 'https://www.linshuo.top:1998/checkSaveOrUpdate',
           data: {
             "openId": that.data.openid,
             "tarId": that.data.rInfos.id
@@ -75,7 +75,7 @@ Component({
                 'visitNum': res.data+1,
               }
               wx.request({
-                url: 'http://localhost:8080/updateBrowsingHistory',
+                url: 'https://www.linshuo.top:1998/updateBrowsingHistory',
                 data: JSON.stringify(params),
                 method: "POST",
                 success(res) {
@@ -93,7 +93,7 @@ Component({
                 'visitNum': 1,
               }
               wx.request({
-                url: 'http://localhost:8080/saveBrowsingHistory',
+                url: 'https://www.linshuo.top:1998/saveBrowsingHistory',
                 data: JSON.stringify(params),
                 method: "POST",
                 success(res) {
@@ -176,14 +176,14 @@ Component({
                 status: false
               })
               wx.request({
-                url: "http://localhost:8080/deleteData",
+                url: "https://www.linshuo.top:1998/deleteData",
                 method: "GET",
                 data: {
                   "id": this.data.rInfos.id
                 }
               })
               wx.request({
-                url: "http://localhost:8080/deleteBrowsingHistory",
+                url: "https://www.linshuo.top:1998/deleteBrowsingHistory",
                 method: "GET",
                 data: {
                   "openId": this.data.openid,

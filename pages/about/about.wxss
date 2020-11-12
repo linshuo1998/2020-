@@ -14,6 +14,7 @@
   /* position: fixed;
   width: 100%; */
   background-color: whitesmoke;
+  /* background-color: black; */
 }
 .page .header .avatar{
   width: 128rpx;
@@ -68,6 +69,7 @@
   bottom: 0;
   z-index: 999; */
   background-color: whitesmoke;
+  /* background-color: black; */
 }
 .page .footer .sentence{
   color: #999;

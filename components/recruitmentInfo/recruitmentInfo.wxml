@@ -2,9 +2,9 @@
   <view class="container {{isDelete?'deleteItem':''}}"  bindlongpress="_deleteItem" bindtouchend="_touchend" wx:if="{{status}}">
     <view id="{{rInfos.id}}" bindtap="showDetail">
       <view class="_header">
-        <text class="title">{{rInfos.title}}</text>
-        <text wx:if="{{rInfos.tags}}" class="onCampus">{{rInfos.tags[0]}}</text>
-        <text class="wage">{{rInfos.wage}}</text>
+        <text class="title" style="font-weight:bold">{{rInfos.title}}</text>
+        <text wx:if="{{rInfos.tags}}" class="onCampus" style="font-weight:bold">{{rInfos.tags[0]}}</text>
+        <text class="wage" style="font-weight:bold">{{rInfos.wage}}</text>
       </view>
       <view class="_body1">
         <text class="iconfont icon-location"/>
@@ -33,7 +33,7 @@
       <text wx:if="{{rInfos.wxNumber}}">【微信号码】{{rInfos.wxNumber}}</text>
       <text>【详细地址】{{rInfos.addressDetail}}</text>
       <view class="detailChild">
-        <button wx:if="{{rInfos.wxNumber!=null}}" id="{{index}}" class="btn" type="primary" size="mini" plain bindtap="copy">复制微信号</button>
+        <button wx:if="{{rInfos.wxNumber}}" id="{{index}}" class="btn" type="primary" size="mini" plain bindtap="copy">复制微信号</button>
         <button id="{{index}}" class="btn" type="primary" size="mini" plain bindtap="call">拨打电话</button>
         <button id="{{index}}" class="btn" type="primary" size="mini" plain bindtap="showRoute">查看路线</button>
       </view>

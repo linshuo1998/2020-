@@ -27,7 +27,7 @@ Page({
     let that = this
     // 获取基本信息
     wx.request({
-      url: 'http://localhost:8080/findMainInfo',
+      url: 'https://www.linshuo.top:1998/findMainInfo',
       data:{"id":openid},
       method: "GET",
       success(res) {
@@ -39,7 +39,7 @@ Page({
   })
   // 获取荣誉奖项信息
   wx.request({
-    url: 'http://localhost:8080/findAwardInfo',
+    url: 'https://www.linshuo.top:1998/findAwardInfo',
     data:{"id":openid},
     method: "GET",
     success(res) {
@@ -52,7 +52,7 @@ Page({
 })
   // 获取技能证书信息
   wx.request({
-    url: 'http://localhost:8080/findSkillInfo',
+    url: 'https://www.linshuo.top:1998/findSkillInfo',
     data:{"id":openid},
     method: "GET",
     success(res) {
@@ -64,7 +64,7 @@ Page({
 })
 // 获取工作经历信息
 wx.request({
-  url: 'http://localhost:8080/findWorkExpInfo',
+  url: 'https://www.linshuo.top:1998/findWorkExpInfo',
   data:{"id":openid},
   method: "GET",
   success(res) {
@@ -81,7 +81,7 @@ wx.request({
 })
 // 获取教育经历信息
 wx.request({
-  url: 'http://localhost:8080/findEduExpInfo',
+  url: 'https://www.linshuo.top:1998/findEduExpInfo',
   data:{"id":openid},
   method: "GET",
   success(res) {
@@ -98,7 +98,7 @@ wx.request({
 })
 // 获取主修课程信息
 wx.request({
-  url: 'http://localhost:8080/findCourseInfo',
+  url: 'https://www.linshuo.top:1998/findCourseInfo',
   data:{"id":openid},
   method: "GET",
   success(res) {
@@ -110,7 +110,7 @@ wx.request({
 })
 //获取校园活动信息
 wx.request({
-  url: 'http://localhost:8080/findActivityInfo',
+  url: 'https://www.linshuo.top:1998/findActivityInfo',
   data:{"id":openid},
   method: "GET",
   success(res) {
@@ -127,7 +127,7 @@ wx.request({
 })
 // 获取自我评鉴信息
 wx.request({
-  url: 'http://localhost:8080/findSelfEvaluation',
+  url: 'https://www.linshuo.top:1998/findSelfEvaluation',
   data:{"id":openid},
   method: "GET",
   success(res) {

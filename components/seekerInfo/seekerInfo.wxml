@@ -4,7 +4,7 @@
   <view class="container">
   <view class="content">
     <view class="left">
-      <image class="userinfo-avatar" src="{{_data.MainInfo.avatar}}"/>
+      <image class="userinfo-avatar" src="{{_data.MainInfo.avatar}}" mode="aspectFill"/>
     </view>
     <view class="right">
       <view wx:if="{{showAbout}}">
@@ -17,7 +17,7 @@
         <view class="show">
           <text class="name">{{_data.MainInfo.name}}</text>
           <view class="_text">
-            <block wx:for="{{_data.WorkExpInfo}}" wx:key="index" wx:for-item="workExp">
+            <block wx:for="{{_data.WorkExpInfo.workExps}}" wx:key="index" wx:for-item="workExp">
               <text space="ensp">{{index+1}}. {{workExp.beginDate}} ~ {{workExp.endDate}}</text>
               <text>{{workExp.work}}</text>
             </block>

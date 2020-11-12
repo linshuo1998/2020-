@@ -65,7 +65,7 @@
 
 ._header .wage{
   line-height: 60rpx;
-  width: 23%;
+  width: 25%;
   font-size: 30rpx;
   color: tomato;
   overflow: hidden;

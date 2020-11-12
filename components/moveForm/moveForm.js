@@ -82,7 +82,7 @@ Component({
   }
   let openid = fatherPage.data.openid
   wx.request({
-    url: 'http://localhost:8080/updateCourseInfo',
+    url: 'https://www.linshuo.top:1998/updateCourseInfo',
     method:"POST",
     data:JSON.stringify({
       "openId":openid,

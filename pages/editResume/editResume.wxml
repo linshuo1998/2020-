@@ -2,7 +2,7 @@
 
   <view id="_0" class="title" bindtap="showDetail">
    
-    <view><text style="color:red;">*</text><text space="ensp"> 基本信息</text></view>
+    <view><text style="color:red;">*</text><text space="ensp" style="{{open[0]?'font-weight:bold':''}}"> 基本信息</text></view>
     <image src="{{open[0] ? imgs.upArrow : imgs.downArrow}}" style="width:32rpx;height:32rpx;"></image>
   </view>
   <view class="content" hidden="{{!open[0]}}">
@@ -83,7 +83,10 @@
           <view><text space="ensp"> 出生日期</text></view>
         </view>
         <view class="right">
-          <picker name="birthday" mode="date" value="{{date}}" start="1995-09-01" end="2008-11-01" bindchange="bindDateChange">
+          <picker name="birthday" mode="date" value="{{date}}" 
+          start="{{startDate}}"
+          end="{{curDate}}"
+          bindchange="bindDateChange">
             <view class="picker">
               {{date}}
             </view>
@@ -131,7 +134,7 @@
           <view><text space="ensp"> 微信号</text></view>
         </view>
         <view class="right">
-          <input name="wxNumber" placeholder="请输入手机号码" value="{{mainInfo.wxNumber}}"/>
+          <input name="wxNumber" placeholder="请输入微信号码" value="{{mainInfo.wxNumber}}"/>
         </view>
       </view>
       <button type="primary" style="width:100%"  form-type="submit">保存</button>
@@ -140,7 +143,7 @@
 
 
   <view id="_1" class="title" bindtap="showDetail">
-    <view><text space="ensp">  荣誉奖项</text></view>
+    <view><text space="ensp" style="{{open[1]?'font-weight:bold':''}}">  荣誉奖项</text></view>
     <image src="{{open[1] ? imgs.upArrow : imgs.downArrow}}" style="width:32rpx;height:32rpx;"></image>
   </view>
   <view class="content" hidden="{{!open[1]}}">
@@ -161,7 +164,7 @@
 
 
   <view id="_2" class="title" bindtap="showDetail">
-    <view><text space="ensp">  技能证书</text></view>
+    <view><text space="ensp" style="{{open[2]?'font-weight:bold':''}}">  技能证书</text></view>
     <image src="{{open[2] ? imgs.upArrow : imgs.downArrow}}" style="width:32rpx;height:32rpx;"></image>
   </view>
   <view class="content" hidden="{{!open[2]}}">
@@ -179,7 +182,7 @@
   </view>
 
   <view id="_3" class="title" bindtap="showDetail">
-    <view><text style="color:red;">*</text><text space="ensp"> 工作经历</text></view>
+    <view><text style="color:red;">*</text><text space="ensp" style="{{open[3]?'font-weight:bold':''}}"> 工作经历</text></view>
     <image src="{{open[3] ? imgs.upArrow : imgs.downArrow}}" style="width:32rpx;height:32rpx;"></image>
   </view>
   <view class="content" hidden="{{!open[3]}}">
@@ -196,7 +199,7 @@
 
 
   <view id="_4" class="title" bindtap="showDetail">
-    <view><text space="ensp">  教育经历</text></view>
+    <view><text space="ensp" style="{{open[4]?'font-weight:bold':''}}">  教育经历</text></view>
     <image src="{{open[4] ? imgs.upArrow : imgs.downArrow}}" style="width:32rpx;height:32rpx;"></image>
   </view>
   <view class="content" hidden="{{!open[4]}}">
@@ -212,7 +215,7 @@
   </view>
 
   <view id="_5" class="title" bindtap="showDetail">
-    <view><text space="ensp">  主修课程</text></view>
+    <view><text space="ensp" style="{{open[5]?'font-weight:bold':''}}">  主修课程</text></view>
     <image src="{{open[5] ? imgs.upArrow : imgs.downArrow}}" style="width:32rpx;height:32rpx;"></image>
   </view>
   <view class="content" hidden="{{!open[5]}}">
@@ -227,7 +230,7 @@
   </view>
 
   <view id="_6" class="title" bindtap="showDetail">
-    <view><text space="ensp">  校园活动</text></view>
+    <view><text space="ensp" style="{{open[6]?'font-weight:bold':''}}">  校园活动</text></view>
     <image src="{{open[6] ? imgs.upArrow : imgs.downArrow}}" style="width:32rpx;height:32rpx;"></image>
   </view>
   <view class="content" hidden="{{!open[6]}}">
@@ -244,7 +247,7 @@
   </view>
 
   <view id="_7" class="title" bindtap="showDetail">
-    <view><text style="color:red;">*</text><text space="ensp"> 自我评鉴</text></view>
+    <view><text style="color:red;">*</text><text space="ensp" style="{{open[7]?'font-weight:bold':''}}"> 自我评鉴</text></view>
     <image src="{{open[7] ? imgs.upArrow : imgs.downArrow}}" style="width:32rpx;height:32rpx;"></image>
   </view>
   <view class="content" hidden="{{!open[7]}}">

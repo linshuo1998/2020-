@@ -27,56 +27,166 @@ Page({
   },
 
 
-
   showDetail: function (e) {
     console.log(e)
     if (e.currentTarget.id == "_0") {
+      var this_open = this.data.open
+      for(var i=0;i<this_open.length;i++){
+        if(i==0){
+          this_open[i] = !this_open[i]
+        }
+        else{
+          this_open[i] = false;
+        }
+        
+
+      }
       this.setData({
-        "open[0]": !this.data.open[0]
+        open:this_open
       })
-      console.log(this.data.open)
+      // this.setData({
+      //   "open[0]": !this.data.open[0]
+      // })
     }
     if (e.currentTarget.id == "_1") {
+      var this_open = this.data.open
+      for(var i=0;i<this_open.length;i++){
+        if(i==1){
+          this_open[i] = !this_open[i]
+        }
+        else{
+          this_open[i] = false;
+        }
+        
+
+      }
       this.setData({
-        "open[1]": !this.data.open[1]
+        open:this_open
       })
-      console.log(this.data.open)
+      // this.setData({
+      //   "open[1]": !this.data.open[1]
+      // })
+      // console.log(this.data.open)
     }
     if (e.currentTarget.id == "_2") {
+      var this_open = this.data.open
+      for(var i=0;i<this_open.length;i++){
+        if(i==2){
+          this_open[i] = !this_open[i]
+        }
+        else{
+          this_open[i] = false;
+        }
+        
+
+      }
       this.setData({
-        "open[2]": !this.data.open[2]
+        open:this_open
       })
-      console.log(this.data.open)
+      // this.setData({
+      //   "open[2]": !this.data.open[2]
+      // })
+      // console.log(this.data.open)
     }
     if (e.currentTarget.id == "_3") {
+      var this_open = this.data.open
+      for(var i=0;i<this_open.length;i++){
+        if(i==3){
+          this_open[i] = !this_open[i]
+        }
+        else{
+          this_open[i] = false;
+        }
+        
+
+      }
       this.setData({
-        "open[3]": !this.data.open[3]
+        open:this_open
       })
-      console.log(this.data.open)
+      // this.setData({
+      //   "open[3]": !this.data.open[3]
+      // })
+      // console.log(this.data.open)
     }
     if (e.currentTarget.id == "_4") {
+      var this_open = this.data.open
+      for(var i=0;i<this_open.length;i++){
+        if(i==4){
+          this_open[i] = !this_open[i]
+        }
+        else{
+          this_open[i] = false;
+        }
+        
+
+      }
       this.setData({
-        "open[4]": !this.data.open[4]
+        open:this_open
       })
-      console.log(this.data.open)
+      // this.setData({
+      //   "open[4]": !this.data.open[4]
+      // })
+      // console.log(this.data.open)
     }
     if (e.currentTarget.id == "_5") {
+      var this_open = this.data.open
+      for(var i=0;i<this_open.length;i++){
+        if(i==5){
+          this_open[i] = !this_open[i]
+        }
+        else{
+          this_open[i] = false;
+        }
+        
+
+      }
       this.setData({
-        "open[5]": !this.data.open[5]
+        open:this_open
       })
-      console.log(this.data.open)
+      // this.setData({
+      //   "open[5]": !this.data.open[5]
+      // })
+      // console.log(this.data.open)
     }
     if (e.currentTarget.id == "_6") {
+      var this_open = this.data.open
+      for(var i=0;i<this_open.length;i++){
+        if(i==6){
+          this_open[i] = !this_open[i]
+        }
+        else{
+          this_open[i] = false;
+        }
+        
+
+      }
       this.setData({
-        "open[6]": !this.data.open[6]
+        open:this_open
       })
-      console.log(this.data.open)
+      // this.setData({
+      //   "open[6]": !this.data.open[6]
+      // })
+      // console.log(this.data.open)
     }
     if (e.currentTarget.id == "_7") {
+      var this_open = this.data.open
+      for(var i=0;i<this_open.length;i++){
+        if(i==7){
+          this_open[i] = !this_open[i]
+        }
+        else{
+          this_open[i] = false;
+        }
+        
+
+      }
       this.setData({
-        "open[7]": !this.data.open[7]
+        open:this_open
       })
-      console.log(this.data.open)
+      // this.setData({
+      //   "open[7]": !this.data.open[7]
+      // })
+      // console.log(this.data.open)
     }
 
   },
@@ -94,9 +204,11 @@ Page({
           awards: this.data.awards.concat({
             "awardName": null,
             "getAwardDate": null
-          })
+          }),
+          awards_update:true
         })
         console.log(this.data.awards)
+
       } else {
         wx.showToast({
           title: '信息不完整！',
@@ -114,7 +226,8 @@ Page({
           skills: this.data.skills.concat({
             "skillName": null,
             "getSkillDate": null
-          })
+          }),
+          skills_update:true
         })
       } else {
         wx.showToast({
@@ -127,13 +240,21 @@ Page({
       let lastItem = this.data.eduExps[this.data.eduExps.length - 1]
       if (lastItem.school != null && lastItem.beginDate != null && lastItem.endDate != null) {
         console.log("确实完整了")
+        if(lastItem.beginDate>lastItem.endDate){
+          wx.showToast({
+            title: '开始时间大于结束时间',
+            icon:'none'
+          })
+          return
+        }
         this.setData({
           // awards:this.data.awards.concat({'add':true,'isOpen':false}),
           eduExps: this.data.eduExps.concat({
             "school": null,
             "beginDate": null,
             "beginDate": null
-          })
+          }),
+         eduExps_update:true
         })
       } else {
         wx.showToast({
@@ -145,13 +266,21 @@ Page({
       let lastItem = this.data.activities[this.data.activities.length - 1]
       if (lastItem.activity != null && lastItem.beginDate != null && lastItem.endDate != null) {
         console.log("确实完整了")
+        if(lastItem.beginDate>lastItem.endDate){
+          wx.showToast({
+            title: '开始时间大于结束时间',
+            icon:'none'
+          })
+          return
+        }
         this.setData({
           // awards:this.data.awards.concat({'add':true,'isOpen':false}),
           activities: this.data.activities.concat({
             "activity": null,
             "beginDate": null,
             "endDate": null
-          })
+          }),
+          activities_update:true
         })
       } else {
         wx.showToast({
@@ -166,7 +295,8 @@ Page({
         this.setData({
           courses: this.data.courses.concat({
             "courseName": null
-          })
+          }),
+          courses_update:true
         })
       } else {
         wx.showToast({
@@ -179,13 +309,24 @@ Page({
       let lastItem = this.data.workExps[this.data.workExps.length - 1]
       if (lastItem.work != null && lastItem.beginDate != null && lastItem.endDate != null) {
         console.log("确实完整了")
+        console.log("开始时间",lastItem.beginDate)
+        console.log("结束时间",lastItem.endDate)
+        if(lastItem.beginDate>lastItem.endDate){
+          wx.showToast({
+            title: '开始时间大于结束时间',
+            icon:'none'
+          })
+          return
+        }
+        // console.log("还有吗？？？")
         this.setData({
           // awards:this.data.awards.concat({'add':true,'isOpen':false}),
           workExps: this.data.workExps.concat({
             "work": null,
             "beginDate": null,
             "beginDate": null
-          })
+          }),
+          workExps_update:true
         })
       } else {
         wx.showToast({
@@ -330,22 +471,40 @@ Page({
       "mainInfo_": this_mainInfo
     })
     console.log(this.data.mianInfo_)
-    if (this.data.mainInfo) {
+ 
+    if (this.data.mainInfo_update) {
+      console.log(this.data.mainInfo)
+      console.log(JSON.stringify(this.data.mianInfo_))
       wx.request({
-        url: 'http://localhost:8080/updateMainInfo',
+        url: 'https://www.linshuo.top:1998/updateMainInfo',
         data: JSON.stringify(this.data.mainInfo_),
         method: "POST",
         success(res) {
+          console.log("修改成功")
           console.log(res)
+          wx.showToast({
+            title: '数据已更新',
+          })
+          that.setData({
+            mainInfo_update:true
+          })
         }
       })
     } else {
+      console.log(JSON.stringify(this.data.mianInfo_))
       wx.request({
-        url: 'http://localhost:8080/saveMainInfo',
+        url: 'https://www.linshuo.top:1998/saveMainInfo',
         data: JSON.stringify(this.data.mainInfo_),
         method: "POST",
         success(res) {
+          console.log("保存成功")
           console.log(res)
+          wx.showToast({
+            title: '保存成功',
+          })
+          that.setData({
+            mainInfo_update:true
+          })
         }
       })
     }
@@ -359,9 +518,10 @@ Page({
         console.log(this.data.awards)
         let awards = this.data.awards
         let openId = this.data.openid
-        if (this.data.awardsFlag) {
+        if (this.data.awards_update) {
+          let that = this;
           wx.request({
-            url: 'http://localhost:8080/updateAwardInfo',
+            url: 'https://www.linshuo.top:1998/updateAwardInfo',
             method: "POST",
             data: JSON.stringify({
               "openId": openId,
@@ -370,11 +530,18 @@ Page({
             success(res) {
               console.log("成功更新数据")
               console.log(res)
+              wx.showToast({
+                title: '数据已更新',
+              })
+              that.setData({
+                awards_update:true
+              })
             }
           })
         } else {
+          let that =this;
           wx.request({
-            url: 'http://localhost:8080/saveAwardInfo',
+            url: 'https://www.linshuo.top:1998/saveAwardInfo',
             method: "POST",
             data: JSON.stringify({
               "openId": openId,
@@ -383,15 +550,22 @@ Page({
             success(res) {
               console.log("成功保存数据")
               console.log(res)
+              wx.showToast({
+                title: '保存成功',
+              }) 
+              that.setData({
+                awards_update:true
+              })
             }
           })
         }
       } else if (!this.data.awards[this.data.awards.length - 1].awardName && !this.data.awards[this.data.awards.length - 1].getAwardDate) {
         let awards = this.data.awards
         let openId = this.data.openid
-        if (this.data.awardsFlag) {
+        if (this.data.awards_update) {
+          let that = this;
           wx.request({
-            url: 'http://localhost:8080/updateAwardInfo',
+            url: 'https://www.linshuo.top:1998/updateAwardInfo',
             method: "POST",
             data: JSON.stringify({
               "openId": openId,
@@ -400,11 +574,18 @@ Page({
             success(res) {
               console.log("成功更新数据")
               console.log(res)
+              wx.showToast({
+                title: '数据已更新',
+              })
+              that.setData({
+                awards_update:true
+              })
             }
           })
         } else {
+          let that =this;
           wx.request({
-            url: 'http://localhost:8080/saveAwardInfo',
+            url: 'https://www.linshuo.top:1998/saveAwardInfo',
             method: "POST",
             data: JSON.stringify({
               "openId": openId,
@@ -413,6 +594,12 @@ Page({
             success(res) {
               console.log("成功保存数据")
               console.log(res)
+              wx.showToast({
+                title: '保存成功',
+              }) 
+              that.setData({
+                awards_update:true
+              })
             }
           })
         }
@@ -428,9 +615,10 @@ Page({
       if (this.data.awards[this.data.awards.length - 1].awardName && this.data.awards[this.data.awards.length - 1].getAwardDate) {
         let awards = this.data.awards
         let openId = this.data.openid
-        if (this.data.awardsFlag) {
+        if (this.data.awards_update) {
+          let that = this;
           wx.request({
-            url: 'http://localhost:8080/updateAwardInfo',
+            url: 'https://www.linshuo.top:1998/updateAwardInfo',
             method: "POST",
             data: JSON.stringify({
               "openId": openId,
@@ -439,11 +627,18 @@ Page({
             success(res) {
               console.log("成功更新数据")
               console.log(res)
+              wx.showToast({
+                title: '数据已更新',
+              })
+              that.setData({
+                awards_update:true
+              })
             }
           })
         } else {
+          let that =this;
           wx.request({
-            url: 'http://localhost:8080/saveAwardInfo',
+            url: 'https://www.linshuo.top:1998/saveAwardInfo',
             method: "POST",
             data: JSON.stringify({
               "openId": openId,
@@ -452,6 +647,12 @@ Page({
             success(res) {
               console.log("成功保存数据")
               console.log(res)
+              wx.showToast({
+                title: '保存成功',
+              }) 
+              that.setData({
+                awards_update:true
+              })
             }
           })
         }
@@ -468,9 +669,11 @@ Page({
       if (this.data.skills[this.data.skills.length - 1].skillName && this.data.skills[this.data.skills.length - 1].getSkillDate) {
         let skills = this.data.skills
         let openId = this.data.openid
-        if (this.data.skillsFlag) {
+        let that = this
+        if (this.data.skills_update) {
+          
           wx.request({
-            url: 'http://localhost:8080/updateSkillInfo',
+            url: 'https://www.linshuo.top:1998/updateSkillInfo',
             method: "POST",
             data: JSON.stringify({
               "openId": openId,
@@ -479,11 +682,17 @@ Page({
             success(res) {
               console.log("成功更新数据")
               console.log(res)
+              wx.showToast({
+                title: '数据已更新',
+              })
+              that.setData({
+                skills_update:true
+              })
             }
           })
         } else {
           wx.request({
-            url: 'http://localhost:8080/saveSkillInfo',
+            url: 'https://www.linshuo.top:1998/saveSkillInfo',
             method: "POST",
             data: JSON.stringify({
               "openId": openId,
@@ -492,6 +701,12 @@ Page({
             success(res) {
               console.log("成功保存数据")
               console.log(res)
+              wx.showToast({
+                title: '保存成功',
+              })
+              that.setData({
+                skills_update:true
+              })
             }
           })
         }
@@ -499,9 +714,11 @@ Page({
       } else if (!this.data.skills[this.data.skills.length - 1].skillName && !this.data.skills[this.data.skills.length - 1].getSkillDate) {
         let skills = this.data.skills
         let openId = this.data.openid
-        if (this.data.skillsFlag) {
+        let that = this
+        if (this.data.skills_update) {
+          
           wx.request({
-            url: 'http://localhost:8080/updateSkillInfo',
+            url: 'https://www.linshuo.top:1998/updateSkillInfo',
             method: "POST",
             data: JSON.stringify({
               "openId": openId,
@@ -510,11 +727,17 @@ Page({
             success(res) {
               console.log("成功更新数据")
               console.log(res)
+              wx.showToast({
+                title: '数据已更新',
+              })
+              that.setData({
+                skills_update:true
+              })
             }
           })
         } else {
           wx.request({
-            url: 'http://localhost:8080/saveSkillInfo',
+            url: 'https://www.linshuo.top:1998/saveSkillInfo',
             method: "POST",
             data: JSON.stringify({
               "openId": openId,
@@ -523,6 +746,12 @@ Page({
             success(res) {
               console.log("成功保存数据")
               console.log(res)
+              wx.showToast({
+                title: '保存成功',
+              })
+              that.setData({
+                skills_update:true
+              })
             }
           })
         }
@@ -536,9 +765,10 @@ Page({
       if (this.data.skills[this.data.skills.length - 1].skillName && this.data.skills[this.data.skills.length - 1].getSkillDate) {
         let skills = this.data.skills
         let openId = this.data.openid
-        if (this.data.skillsFlag) {
+        let that = this
+        if (this.data.skills_update) {
           wx.request({
-            url: 'http://localhost:8080/updateSkillInfo',
+            url: 'https://www.linshuo.top:1998/updateSkillInfo',
             method: "POST",
             data: JSON.stringify({
               "openId": openId,
@@ -547,11 +777,17 @@ Page({
             success(res) {
               console.log("成功更新数据")
               console.log(res)
+              wx.showToast({
+                title: '数据已更新',
+              })
+              that.setData({
+                skills_update:true
+              })
             }
           })
         } else {
           wx.request({
-            url: 'http://localhost:8080/saveSkillInfo',
+            url: 'https://www.linshuo.top:1998/saveSkillInfo',
             method: "POST",
             data: JSON.stringify({
               "openId": openId,
@@ -560,6 +796,12 @@ Page({
             success(res) {
               console.log("成功保存数据")
               console.log(res)
+              wx.showToast({
+                title: '保存成功',
+              })
+              that.setData({
+                skills_update:true
+              })
             }
           })
         }
@@ -576,9 +818,26 @@ Page({
     if (this.data.workExps[this.data.workExps.length - 1].work && this.data.workExps[this.data.workExps.length - 1].beginDate && this.data.workExps[this.data.workExps.length - 1].endDate) {
       let workExps = this.data.workExps
       let openId = this.data.openid
-      if (this.data.workExpsFlag) {
+
+      let lastItem = this.data.workExps[this.data.workExps.length - 1]
+      if(lastItem.beginDate>lastItem.endDate){
+        wx.showToast({
+          title: '开始时间大于结束时间',
+          icon:'none'
+        })
+        return
+      }
+
+
+
+      let that = this
+
+
+
+
+      if (this.data.workExps_update) {
         wx.request({
-          url: 'http://localhost:8080/updateWorkExpInfo',
+          url: 'https://www.linshuo.top:1998/updateWorkExpInfo',
           method: "POST",
           data: JSON.stringify({
             "openId": openId,
@@ -587,11 +846,17 @@ Page({
           success(res) {
             console.log("成功更新数据")
             console.log(res)
+            wx.showToast({
+              title: '数据已更新',
+            })
+            that.setData({
+              workExps_update:true
+            })
           }
         })
       } else {
         wx.request({
-          url: 'http://localhost:8080/saveWorkExpInfo',
+          url: 'https://www.linshuo.top:1998/saveWorkExpInfo',
           method: "POST",
           data: JSON.stringify({
             "openId": openId,
@@ -600,6 +865,12 @@ Page({
           success(res) {
             console.log("成功保存数据")
             console.log(res)
+            wx.showToast({
+              title: '保存成功',
+            })
+            that.setData({
+              workExps_update:true
+            })
           }
         })
       }
@@ -610,15 +881,25 @@ Page({
       })
     }
   },
-
   saveEduExpInfo: function (e) {
     if (this.data.eduExps.length == 1) {
       if (this.data.eduExps[this.data.eduExps.length - 1].school && this.data.eduExps[this.data.eduExps.length - 1].beginDate && this.data.eduExps[this.data.eduExps.length - 1].endDate) {
         let eduExps = this.data.eduExps
         let openId = this.data.openid
-        if (this.data.eduExpsFlag) {
+
+        let lastItem = this.data.eduExps[this.data.eduExps.length - 1]
+        if(lastItem.beginDate>lastItem.endDate){
+          wx.showToast({
+            title: '开始时间大于结束时间',
+            icon:'none'
+          })
+          return
+        }
+  
+        let that = this
+        if (this.data.eduExps_update) {
           wx.request({
-            url: 'http://localhost:8080/updateEduExpInfo',
+            url: 'https://www.linshuo.top:1998/updateEduExpInfo',
             method: "POST",
             data: JSON.stringify({
               "openId": openId,
@@ -627,11 +908,15 @@ Page({
             success(res) {
               console.log("成功更新数据")
               console.log(res)
+              wx.showToast({
+                title: '数据已更新',
+              })
+              that.setData({eduExps_update:true})
             }
           })
         } else {
           wx.request({
-            url: 'http://localhost:8080/saveEduExpInfo',
+            url: 'https://www.linshuo.top:1998/saveEduExpInfo',
             method: "POST",
             data: JSON.stringify({
               "openId": openId,
@@ -640,6 +925,10 @@ Page({
             success(res) {
               console.log("成功保存数据")
               console.log(res)
+              wx.showToast({
+                title: '保存成功',
+              })
+              that.setData({eduExps_update:true})
             }
           })
         }
@@ -647,9 +936,18 @@ Page({
       } else if (!this.data.eduExps[this.data.eduExps.length - 1].school && !this.data.eduExps[this.data.eduExps.length - 1].beginDate && !this.data.eduExps[this.data.eduExps.length - 1].endDate) {
         let eduExps = this.data.eduExps
         let openId = this.data.openid
-        if (this.data.eduExpsFlag) {
+        let lastItem = this.data.eduExps[this.data.eduExps.length - 1]
+        if(lastItem.beginDate>lastItem.endDate){
+          wx.showToast({
+            title: '开始时间大于结束时间',
+            icon:'none'
+          })
+          return
+        }
+        let that = this
+        if (this.data.eduExps_update) {
           wx.request({
-            url: 'http://localhost:8080/updateEduExpInfo',
+            url: 'https://www.linshuo.top:1998/updateEduExpInfo',
             method: "POST",
             data: JSON.stringify({
               "openId": openId,
@@ -658,11 +956,15 @@ Page({
             success(res) {
               console.log("成功更新数据")
               console.log(res)
+              wx.showToast({
+                title: '数据已更新',
+              })
+              that.setData({eduExps_update:true})
             }
           })
         } else {
           wx.request({
-            url: 'http://localhost:8080/saveEduExpInfo',
+            url: 'https://www.linshuo.top:1998/saveEduExpInfo',
             method: "POST",
             data: JSON.stringify({
               "openId": openId,
@@ -671,6 +973,10 @@ Page({
             success(res) {
               console.log("成功保存数据")
               console.log(res)
+              wx.showToast({
+                title: '保存成功',
+              })
+              that.setData({eduExps_update:true})
             }
           })
         }
@@ -684,9 +990,18 @@ Page({
       if (this.data.eduExps[this.data.eduExps.length - 1].school && this.data.eduExps[this.data.eduExps.length - 1].beginDate && this.data.eduExps[this.data.eduExps.length - 1].endDate) {
         let eduExps = this.data.eduExps
         let openId = this.data.openid
-        if (this.data.eduExpsFlag) {
+        let lastItem = this.data.eduExps[this.data.eduExps.length - 1]
+        if(lastItem.beginDate>lastItem.endDate){
+          wx.showToast({
+            title: '开始时间大于结束时间',
+            icon:'none'
+          })
+          return
+        }
+        let that = this
+        if (this.data.eduExps_update) {
           wx.request({
-            url: 'http://localhost:8080/updateEduExpInfo',
+            url: 'https://www.linshuo.top:1998/updateEduExpInfo',
             method: "POST",
             data: JSON.stringify({
               "openId": openId,
@@ -695,11 +1010,15 @@ Page({
             success(res) {
               console.log("成功更新数据")
               console.log(res)
+              wx.showToast({
+                title: '数据已更新',
+              })
+              that.setData({eduExps_update:true})
             }
           })
         } else {
           wx.request({
-            url: 'http://localhost:8080/saveEduExpInfo',
+            url: 'https://www.linshuo.top:1998/saveEduExpInfo',
             method: "POST",
             data: JSON.stringify({
               "openId": openId,
@@ -708,8 +1027,13 @@ Page({
             success(res) {
               console.log("成功保存数据")
               console.log(res)
+              wx.showToast({
+                title: '保存成功',
+              })
+              that.setData({eduExps_update:true})
             }
           })
+        
         }
 
       } else {
@@ -720,15 +1044,15 @@ Page({
       }
     }
   },
-
   saveCourseInfo:function(e){
     if (this.data.courses.length == 1) {
       if (this.data.courses[this.data.courses.length - 1].courseName) {
         let courses = this.data.courses
         let openId = this.data.openid
-        if (this.data.coursesFlag) {
+        let that = this
+        if (this.data.courses_update) {
           wx.request({
-            url: 'http://localhost:8080/updateCourseInfo',
+            url: 'https://www.linshuo.top:1998/updateCourseInfo',
             method: "POST",
             data: JSON.stringify({
               "openId": openId,
@@ -737,11 +1061,17 @@ Page({
             success(res) {
               console.log("成功更新数据")
               console.log(res)
+              wx.showToast({
+                title: '数据已更新',
+              })
+              that.setData({
+                courses_update:true
+              })
             }
           })
         } else {
           wx.request({
-            url: 'http://localhost:8080/saveCourseInfo',
+            url: 'https://www.linshuo.top:1998/saveCourseInfo',
             method: "POST",
             data: JSON.stringify({
               "openId": openId,
@@ -750,6 +1080,12 @@ Page({
             success(res) {
               console.log("成功保存数据")
               console.log(res)
+              wx.showToast({
+                title: '保存成功',
+              })
+              that.setData({
+                courses_update:true
+              })
             }
           })
         }
@@ -757,9 +1093,10 @@ Page({
       } else if (!this.data.courses[this.data.courses.length - 1].courseName) {
         let courses = this.data.courses
         let openId = this.data.openid
-        if (this.data.coursesFlag) {
+        let that = this
+        if (this.data.courses_update) {
           wx.request({
-            url: 'http://localhost:8080/updateCourseInfo',
+            url: 'https://www.linshuo.top:1998/updateCourseInfo',
             method: "POST",
             data: JSON.stringify({
               "openId": openId,
@@ -768,11 +1105,17 @@ Page({
             success(res) {
               console.log("成功更新数据")
               console.log(res)
+              wx.showToast({
+                title: '数据已更新',
+              })
+              that.setData({
+                courses_update:true
+              })
             }
           })
         } else {
           wx.request({
-            url: 'http://localhost:8080/saveCourseInfo',
+            url: 'https://www.linshuo.top:1998/saveCourseInfo',
             method: "POST",
             data: JSON.stringify({
               "openId": openId,
@@ -781,6 +1124,12 @@ Page({
             success(res) {
               console.log("成功保存数据")
               console.log(res)
+              wx.showToast({
+                title: '保存成功',
+              })
+              that.setData({
+                courses_update:true
+              })
             }
           })
         }
@@ -794,9 +1143,10 @@ Page({
       if (this.data.courses[this.data.courses.length - 1].courseName) {
         let courses = this.data.courses
         let openId = this.data.openid
-        if (this.data.coursesFlag) {
+        let that = this
+        if (this.data.courses_update) {
           wx.request({
-            url: 'http://localhost:8080/updateCourseInfo',
+            url: 'https://www.linshuo.top:1998/updateCourseInfo',
             method: "POST",
             data: JSON.stringify({
               "openId": openId,
@@ -805,11 +1155,17 @@ Page({
             success(res) {
               console.log("成功更新数据")
               console.log(res)
+              wx.showToast({
+                title: '数据已更新',
+              })
+              that.setData({
+                courses_update:true
+              })
             }
           })
         } else {
           wx.request({
-            url: 'http://localhost:8080/saveCourseInfo',
+            url: 'https://www.linshuo.top:1998/saveCourseInfo',
             method: "POST",
             data: JSON.stringify({
               "openId": openId,
@@ -818,6 +1174,12 @@ Page({
             success(res) {
               console.log("成功保存数据")
               console.log(res)
+              wx.showToast({
+                title: '保存成功',
+              })
+              that.setData({
+                courses_update:true
+              })
             }
           })
         }
@@ -830,15 +1192,23 @@ Page({
       }
     }
   },
-
   saveActivityInfo:function(e){
       if (this.data.activities.length == 1) {
         if (this.data.activities[this.data.activities.length - 1].activity && this.data.activities[this.data.activities.length - 1].beginDate && this.data.activities[this.data.activities.length - 1].endDate) {
           let activities = this.data.activities
           let openId = this.data.openid
-          if (this.data.activitiesFlag) {
+          let lastItem = this.data.activities[this.data.activities.length - 1]
+          if(lastItem.beginDate>lastItem.endDate){
+            wx.showToast({
+              title: '开始时间大于结束时间',
+              icon:'none'
+            })
+            return
+          }
+          let that = this
+          if (this.data.activities_update) {
             wx.request({
-              url: 'http://localhost:8080/updateActivityInfo',
+              url: 'https://www.linshuo.top:1998/updateActivityInfo',
               method: "POST",
               data: JSON.stringify({
                 "openId": openId,
@@ -847,11 +1217,17 @@ Page({
               success(res) {
                 console.log("成功更新数据")
                 console.log(res)
+                wx.showToast({
+                  title: '数据已更新',
+                })
+                that.setData({
+                  activities_update:true
+                })
               }
             })
           } else {
             wx.request({
-              url: 'http://localhost:8080/saveActivityInfo',
+              url: 'https://www.linshuo.top:1998/saveActivityInfo',
               method: "POST",
               data: JSON.stringify({
                 "openId": openId,
@@ -860,6 +1236,12 @@ Page({
               success(res) {
                 console.log("成功保存数据")
                 console.log(res)
+                wx.showToast({
+                  title: '保存成功',
+                })
+                that.setData({
+                  activities_update:true
+                })
               }
             })
           }
@@ -867,9 +1249,18 @@ Page({
         } else if (!this.data.activities[this.data.activities.length - 1].activity && !this.data.activities[this.data.activities.length - 1].beginDate && !this.data.activities[this.data.activities.length - 1].endDate) {
           let activities = this.data.activities
           let openId = this.data.openid
-          if (this.data.activitiesFlag) {
+          let lastItem = this.data.activities[this.data.activities.length - 1]
+          if(lastItem.beginDate>lastItem.endDate){
+            wx.showToast({
+              title: '开始时间大于结束时间',
+              icon:'none'
+            })
+            return
+          }
+          let that = this
+          if (this.data.activities_update) {
             wx.request({
-              url: 'http://localhost:8080/updateActivityInfo',
+              url: 'https://www.linshuo.top:1998/updateActivityInfo',
               method: "POST",
               data: JSON.stringify({
                 "openId": openId,
@@ -878,11 +1269,17 @@ Page({
               success(res) {
                 console.log("成功更新数据")
                 console.log(res)
+                wx.showToast({
+                  title: '数据已更新',
+                })
+                that.setData({
+                  activities_update:true
+                })
               }
             })
           } else {
             wx.request({
-              url: 'http://localhost:8080/saveActivityInfo',
+              url: 'https://www.linshuo.top:1998/saveActivityInfo',
               method: "POST",
               data: JSON.stringify({
                 "openId": openId,
@@ -891,6 +1288,12 @@ Page({
               success(res) {
                 console.log("成功保存数据")
                 console.log(res)
+                wx.showToast({
+                  title: '保存成功',
+                })
+                that.setData({
+                  activities_update:true
+                })
               }
             })
           }
@@ -904,9 +1307,18 @@ Page({
         if (this.data.activities[this.data.activities.length - 1].activity && this.data.activities[this.data.activities.length - 1].beginDate && this.data.activities[this.data.activities.length - 1].endDate) {
           let activities = this.data.activities
           let openId = this.data.openid
-          if (this.data.activitiesFlag) {
+          let lastItem = this.data.activities[this.data.activities.length - 1]
+          if(lastItem.beginDate>lastItem.endDate){
+            wx.showToast({
+              title: '开始时间大于结束时间',
+              icon:'none'
+            })
+            return
+          }
+          let that = this
+          if (this.data.activities_update) {
             wx.request({
-              url: 'http://localhost:8080/updateActivityInfo',
+              url: 'https://www.linshuo.top:1998/updateActivityInfo',
               method: "POST",
               data: JSON.stringify({
                 "openId": openId,
@@ -915,11 +1327,17 @@ Page({
               success(res) {
                 console.log("成功更新数据")
                 console.log(res)
+                wx.showToast({
+                  title: '数据已更新',
+                })
+                that.setData({
+                  activities_update:true
+                })
               }
             })
           } else {
             wx.request({
-              url: 'http://localhost:8080/saveActivityInfo',
+              url: 'https://www.linshuo.top:1998/saveActivityInfo',
               method: "POST",
               data: JSON.stringify({
                 "openId": openId,
@@ -928,6 +1346,12 @@ Page({
               success(res) {
                 console.log("成功保存数据")
                 console.log(res)
+                wx.showToast({
+                  title: '保存成功',
+                })
+                that.setData({
+                  activities_update:true
+                })
               }
             })
           }
@@ -944,30 +1368,40 @@ Page({
   saveSelfEvaluation: function (e) {
     console.log(e.detail.value.selfEvaluation)
     if (e.detail.value.selfEvaluation) {
-      if (this.data.selfEvaluationFlag) {
+      if (this.data.selfEvaluation_update) {
         let openid = this.data.openid
         wx.request({
-          url: 'http://localhost:8080/updateSelfEvaluation',
+          url: 'https://www.linshuo.top:1998/updateSelfEvaluation',
           method: "POST",
           data: JSON.stringify({
             "openId": openid,
             "selfEvaluation": e.detail.value.selfEvaluation
           }),
           success(res) {
-
+            wx.showToast({
+              title: '数据已更新',
+            })
+            that.setData({
+              selfEvaluation_update:true
+            })
           }
         })
       } else {
         let openid = this.data.openid
         wx.request({
-          url: 'http://localhost:8080/saveSelfEvaluation',
+          url: 'https://www.linshuo.top:1998/saveSelfEvaluation',
           method: "POST",
           data: JSON.stringify({
             "openId": openid,
             "selfEvaluation": e.detail.value.selfEvaluation
           }),
           success(res) {
-
+            wx.showToast({
+              title: '保存成功',
+            })
+            that.setData({
+              selfEvaluation_update:true
+            })
           }
         })
       }
@@ -979,8 +1413,6 @@ Page({
     }
 
   },
-
-
   getResume:function(){
     wx.navigateTo({
       url: '/pages/myResume/myResume?openid='+this.data.openid
@@ -994,7 +1426,9 @@ Page({
   data: {
     array: ['男', '女'],
     index: 0,
-    date: curDate,
+    startDate:"1990-01-01",
+    curDate:curDate,
+    date: "1900-01-01",
     open: [true, false, false, false, false, false, false, false],
     awards: [{
       "awardName": null,
@@ -1039,6 +1473,15 @@ Page({
     coursesFlag:null,
     activitiesFlag: null,
     selfEvaluationFlag: null,
+
+    mainInfo_update:false,
+    awards_update:false,
+    skills_update:false,
+    workExps_update:false,
+    eduExps_update:false,
+    courses_update:false,
+    activities_update:false,
+    selfEvaluation_update:false
   },
 
   /**
@@ -1050,35 +1493,40 @@ Page({
         openid: options.openid
       })
       let that = this;
+
       wx.request({
-        url: 'http://localhost:8080/findMainInfo',
+        url: 'https://www.linshuo.top:1998/findMainInfo',
         data: {
           id: that.data.openid
         },
         method: "GET",
         success(res) {
-          console.log(res)
-          console.log("::::::::::::::;;;;")
           that.setData({
             mainInfo: res.data
           })
-          if (res.data.gender == "女") {
+          if(that.data.mainInfo.openId){
             that.setData({
-              index: 1
+              mainInfo_update:true
+            })
+            if (res.data.gender == "女") {
+              that.setData({
+                index: 1
+              })
+            }
+            if (res.data.avatar) {
+              that.setData({
+                avatar: res.data.avatar
+              })
+            }
+            that.setData({
+              date: res.data.birthday
             })
           }
-          if (res.data.avatar) {
-            that.setData({
-              avatar: res.data.avatar
-            })
-          }
-          that.setData({
-            date: res.data.birthday
-          })
+        
         }
       })
       wx.request({
-        url: 'http://localhost:8080/findAwardInfo',
+        url: 'https://www.linshuo.top:1998/findAwardInfo',
         data: {
           id: that.data.openid
         },
@@ -1087,452 +1535,131 @@ Page({
           console.log("正在查找")
           console.log(res.data)
           that.setData({
-            awardsFlag: res.data.awards
+            awardsFlag: res.data
 
           })
-          if (that.data.awardsFlag) {
+          if (that.data.awardsFlag.openId) {
             that.setData({
               awards: res.data.awards,
+              awards_update:true
             })
           }
 
         }
       })
       wx.request({
-        url: 'http://localhost:8080/findSkillInfo',
+        url: 'https://www.linshuo.top:1998/findSkillInfo',
         data: {
           id: that.data.openid
         },
         method: "GET",
         success(res) {
           that.setData({
-            skillsFlag: res.data.skills,
+            skillsFlag: res.data,
           })
-          if (that.data.skillsFlag) {
+          if (that.data.skillsFlag.openId) {
             that.setData({
               skills: res.data.skills,
+              skills_update:true
             })
           }
 
         }
       })
       wx.request({
-        url: 'http://localhost:8080/findWorkExpInfo',
+        url: 'https://www.linshuo.top:1998/findWorkExpInfo',
         data: {
           id: that.data.openid
         },
         method: "GET",
         success(res) {
           that.setData({
-            workExpsFlag: res.data.workExps,
+            workExpsFlag: res.data,
           })
-          if (that.data.workExpsFlag) {
+          if (that.data.workExpsFlag.openId) {
             that.setData({
               workExps: res.data.workExps,
+              workExps_update:true
             })
           }
 
         }
       })
       wx.request({
-        url: 'http://localhost:8080/findEduExpInfo',
+        url: 'https://www.linshuo.top:1998/findEduExpInfo',
         data: {
           id: that.data.openid
         },
         method: "GET",
         success(res) {
           that.setData({
-            eduExpsFlag: res.data.eduExps,
+            eduExpsFlag: res.data,
           })
-          if (that.data.eduExpsFlag) {
+          if (that.data.eduExpsFlag.openId) {
             that.setData({
               eduExps: res.data.eduExps,
+              eduExps_update:true
             })
           }
 
         }
       })
       wx.request({
-        url: 'http://localhost:8080/findCourseInfo',
+        url: 'https://www.linshuo.top:1998/findCourseInfo',
         data: {
           id: that.data.openid
         },
         method: "GET",
         success(res) {
           that.setData({
-            coursesFlag: res.data.courses,
+            coursesFlag: res.data,
           })
-          if (that.data.coursesFlag) {
+          if (that.data.coursesFlag.openId) {
             that.setData({
               courses: res.data.courses,
+              courses_update:true
             })
           }
 
         }
       })
       wx.request({
-        url: 'http://localhost:8080/findActivityInfo',
+        url: 'https://www.linshuo.top:1998/findActivityInfo',
         data: {
           id: that.data.openid
         },
         method: "GET",
         success(res) {
-          console.log("sdsadsadsadsadsa",res)
           that.setData({
-            activitiesFlag: res.data.activities,
+            activitiesFlag: res.data,
           })
-          if (that.data.activitiesFlag) {
+          if (that.data.activitiesFlag.openId) {
             that.setData({
               activities: res.data.activities,
+              activities_update:true
             })
           }
 
         }
       })
-
-
       wx.request({
-        url: 'http://localhost:8080/findSelfEvaluation',
+        url: 'https://www.linshuo.top:1998/findSelfEvaluation',
         data: {
           id: that.data.openid
         },
         method: "GET",
         success(res) {
-          that.setData({
-            selfEvaluationFlag: res.data.selfEvaluation,
-          })
+          if(res.data.openId){
+            that.setData({
+              selfEvaluationFlag: res.data.selfEvaluation,
+              selfEvaluation_update:true
+            })
+          }
+          
 
         }
       })
-    
-    // if (app.globalData.openid != null) {
-    //   console.log("openid::", app.globalData.openid)
-    //   this.setData({
-    //     openid: app.globalData.openid
-    //   })
-    //   let that = this;
-    //   wx.request({
-    //     url: 'http://localhost:8080/findMainInfo',
-    //     data: {
-    //       id: that.data.openid
-    //     },
-    //     method: "GET",
-    //     success(res) {
-    //       console.log(res)
-    //       console.log("::::::::::::::;;;;")
-    //       that.setData({
-    //         mainInfo: res.data
-    //       })
-    //       if (res.data.gender == "女") {
-    //         that.setData({
-    //           index: 1
-    //         })
-    //       }
-    //       if (res.data.avatar) {
-    //         that.setData({
-    //           avatar: res.data.avatar
-    //         })
-    //       }
-    //       that.setData({
-    //         date: res.data.birthday
-    //       })
-    //     }
-    //   })
-    //   wx.request({
-    //     url: 'http://localhost:8080/findAwardInfo',
-    //     data: {
-    //       id: that.data.openid
-    //     },
-    //     method: "GET",
-    //     success(res) {
-    //       console.log("正在查找")
-    //       console.log(res.data)
-    //       that.setData({
-    //         awardsFlag: res.data.awards
 
-    //       })
-    //       if (that.data.awardsFlag) {
-    //         that.setData({
-    //           awards: res.data.awards,
-    //         })
-    //       }
-
-    //     }
-    //   })
-    //   wx.request({
-    //     url: 'http://localhost:8080/findSkillInfo',
-    //     data: {
-    //       id: that.data.openid
-    //     },
-    //     method: "GET",
-    //     success(res) {
-    //       that.setData({
-    //         skillsFlag: res.data.skills,
-    //       })
-    //       if (that.data.skillsFlag) {
-    //         that.setData({
-    //           skills: res.data.skills,
-    //         })
-    //       }
-
-    //     }
-    //   })
-    //   wx.request({
-    //     url: 'http://localhost:8080/findWorkExpInfo',
-    //     data: {
-    //       id: that.data.openid
-    //     },
-    //     method: "GET",
-    //     success(res) {
-    //       that.setData({
-    //         workExpsFlag: res.data.workExps,
-    //       })
-    //       if (that.data.workExpsFlag) {
-    //         that.setData({
-    //           workExps: res.data.workExps,
-    //         })
-    //       }
-
-    //     }
-    //   })
-    //   wx.request({
-    //     url: 'http://localhost:8080/findEduExpInfo',
-    //     data: {
-    //       id: that.data.openid
-    //     },
-    //     method: "GET",
-    //     success(res) {
-    //       that.setData({
-    //         eduExpsFlag: res.data.eduExps,
-    //       })
-    //       if (that.data.eduExpsFlag) {
-    //         that.setData({
-    //           eduExps: res.data.eduExps,
-    //         })
-    //       }
-
-    //     }
-    //   })
-    //   wx.request({
-    //     url: 'http://localhost:8080/findCourseInfo',
-    //     data: {
-    //       id: that.data.openid
-    //     },
-    //     method: "GET",
-    //     success(res) {
-    //       that.setData({
-    //         coursesFlag: res.data.courses,
-    //       })
-    //       if (that.data.coursesFlag) {
-    //         that.setData({
-    //           courses: res.data.courses,
-    //         })
-    //       }
-
-    //     }
-    //   })
-    //   wx.request({
-    //     url: 'http://localhost:8080/findActivityInfo',
-    //     data: {
-    //       id: that.data.openid
-    //     },
-    //     method: "GET",
-    //     success(res) {
-    //       console.log("sdsadsadsadsadsa",res)
-    //       that.setData({
-    //         activitiesFlag: res.data.activities,
-    //       })
-    //       if (that.data.activitiesFlag) {
-    //         that.setData({
-    //           activities: res.data.activities,
-    //         })
-    //       }
-
-    //     }
-    //   })
-
-
-    //   wx.request({
-    //     url: 'http://localhost:8080/findSelfEvaluation',
-    //     data: {
-    //       id: that.data.openid
-    //     },
-    //     method: "GET",
-    //     success(res) {
-    //       that.setData({
-    //         selfEvaluationFlag: res.data.selfEvaluation,
-    //       })
-
-    //     }
-    //   })
-    // } else {
-    //   app.checkLoginReadyCallback = res => {
-    //     //登陆成功后自己希望执行的，和上面一样
-    //     console.log("openid:::>>>", app.globalData.openid)
-    //     this.setData({
-    //       openid: app.globalData.openid
-    //     })
-    //     let that = this;
-    //     wx.request({
-    //       url: 'http://localhost:8080/findMainInfo',
-    //       data: {
-    //         id: that.data.openid
-    //       },
-    //       method: "GET",
-    //       success(res) {
-    //         console.log(res)
-    //         console.log("::::::::::::::;;;;")
-    //         that.setData({
-    //           mainInfo: res.data
-    //         })
-    //         if (res.data.gender == "女") {
-    //           that.setData({
-    //             index: 1
-    //           })
-    //         }
-    //         if (res.data.avatar) {
-    //           that.setData({
-    //             avatar: res.data.avatar
-    //           })
-    //         }
-    //         that.setData({
-    //           date: res.data.birthday
-    //         })
-    //       }
-    //     })
-    //     wx.request({
-    //       url: 'http://localhost:8080/findAwardInfo',
-    //       data: {
-    //         id: that.data.openid
-    //       },
-    //       method: "GET",
-    //       success(res) {
-    //         console.log("正在查找")
-    //         console.log(res.data)
-    //         that.setData({
-    //           awardsFlag: res.data.awards
-    //         })
-    //         if (that.data.awardsFlag) {
-    //           that.setData({
-    //             awards: res.data.awards,
-    //           })
-    //         }
-    //       }
-    //     })
-    //     wx.request({
-    //       url: 'http://localhost:8080/findSkillInfo',
-    //       data: {
-    //         id: that.data.openid
-    //       },
-    //       method: "GET",
-    //       success(res) {
-    //         that.setData({
-    //           skillsFlag: res.data.skills,
-
-
-    //         })
-    //         if (that.data.skillsFlag) {
-    //           that.setData({
-    //             skills: res.data.skills,
-    //           })
-    //         }
-
-    //       }
-    //     })
-    //     wx.request({
-    //       url: 'http://localhost:8080/findWorkExpInfo',
-    //       data: {
-    //         id: that.data.openid
-    //       },
-    //       method: "GET",
-    //       success(res) {
-    //         that.setData({
-    //           workExpsFlag: res.data.workExps,
-    //         })
-    //         if (that.data.workExpsFlag) {
-    //           that.setData({
-    //             workExps: res.data.workExps,
-    //           })
-    //         }
-
-    //       }
-    //     })
-    //     wx.request({
-    //       url: 'http://localhost:8080/findEduExpInfo',
-    //       data: {
-    //         id: that.data.openid
-    //       },
-    //       method: "GET",
-    //       success(res) {
-    //         that.setData({
-    //           eduExpsFlag: res.data.eduExps,
-    //         })
-    //         if (that.data.eduExpsFlag) {
-    //           that.setData({
-    //             eduExps: res.data.eduExps,
-    //           })
-    //         }
-
-    //       }
-    //     })
-    //     wx.request({
-    //       url: 'http://localhost:8080/findCourseInfo',
-    //       data: {
-    //         id: that.data.openid
-    //       },
-    //       method: "GET",
-    //       success(res) {
-    //         that.setData({
-    //           coursesFlag: res.data.courses,
-    //         })
-    //         if (that.data.coursesFlag) {
-    //           that.setData({
-    //             courses: res.data.courses,
-    //           })
-    //         }
-  
-    //       }
-    //     })
-
-    //     wx.request({
-    //       url: 'http://localhost:8080/findActivityInfo',
-    //       data: {
-    //         id: that.data.openid
-    //       },
-    //       method: "GET",
-    //       success(res) {
-    //         that.setData({
-    //           activitiesFlag: res.data.activities,
-    //         })
-    //         if (that.data.activitiesFlag) {
-    //           that.setData({
-    //             activities: res.data.activities,
-    //           })
-    //         }
-  
-    //       }
-    //     })
-  
-
-
-
-
-
-    //     wx.request({
-    //       url: 'http://localhost:8080/findSelfEvaluation',
-    //       data: {
-    //         id: that.data.openid
-    //       },
-    //       method: "GET",
-    //       success(res) {
-    //         that.setData({
-    //           selfEvaluationFlag: res.data.selfEvaluation,
-    //         })
-
-    //       }
-    //     })
-    //   }
-    // }
 
   },
 

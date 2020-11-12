@@ -43,7 +43,8 @@ Component({
    */
   data: {
     curDate:curDate,
-    beginDate: curDate,
+    startDate:"1999-01-01",
+    beginDate: "1999-01-01",
     endDate: curDate,
   },
 
@@ -96,7 +97,7 @@ Component({
     }
     let openid = fatherPage.data.openid
     wx.request({
-      url: 'http://localhost:8080/updateWorkExpInfo',
+      url: 'https://www.linshuo.top:1998/updateWorkExpInfo',
       method:"POST",
       data:JSON.stringify({
         "openId":openid,
@@ -119,7 +120,7 @@ Component({
     }
     let openid = fatherPage.data.openid
     wx.request({
-      url: 'http://localhost:8080/updateEduExpInfo',
+      url: 'https://www.linshuo.top:1998/updateEduExpInfo',
       method:"POST",
       data:JSON.stringify({
         "openId":openid,
@@ -143,7 +144,7 @@ Component({
     }
     let openid = fatherPage.data.openid
     wx.request({
-      url: 'http://localhost:8080/updateActivityInfo',
+      url: 'https://www.linshuo.top:1998/updateActivityInfo',
       method:"POST",
       data:JSON.stringify({
         "openId":openid,

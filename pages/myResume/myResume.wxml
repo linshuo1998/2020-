@@ -10,11 +10,11 @@
           <text space="emsp" class="prefix">性  别：<text class="suffix">{{mainInfo.gender}}</text></text>
           <text space="emsp" class="prefix">民  族：<text class="suffix">{{mainInfo.people}}</text></text>
           <text space="emsp" class="prefix">出生年月：<text class="suffix">{{mainInfo.birthday}}</text></text>
-          <text space="emsp" class="prefix">籍  贯：<text class="suffix">{{mainInfo.nactivePlace}}</text></text>
+          <text space="emsp" class="prefix">籍  贯：<text class="suffix">{{mainInfo.nativePlace}}</text></text>
           <text space="emsp" class="prefix">专  业：<text class="suffix">{{mainInfo.major}}</text></text>
-          <text space="emsp" class="prefix">健康状况：<text class="suffix">{{mainInfo.status}}</text></text>
+          <text space="emsp" class="prefix">健康状况：<text class="suffix">{{mainInfo.health}}</text></text>
           <text space="emsp" class="prefix">电话号码：<text class="suffix">{{mainInfo.phoneNumber}}</text></text>
-          <text space="emsp" class="prefix">微信号码：<text class="suffix">{{mainInfoe.wxNumber}}</text></text>  
+          <text space="emsp" class="prefix">微信号码：<text class="suffix">{{mainInfo.wxNumber}}</text></text>  
         </view>
       </view>
       <view class="leftBottom">

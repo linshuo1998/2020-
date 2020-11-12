@@ -192,7 +192,7 @@ Page({
       json_params.tags=this.data.published.tags;
       console.log("此时的tags",json_params)
       wx.request({
-        url: 'http://localhost:8080/updateData',
+        url: 'https://www.linshuo.top:1998/updateData',
         method:"POST",
         data:JSON.stringify(json_params),
         success(res){
@@ -215,7 +215,7 @@ Page({
     else{  
       json_params.tags=this.data.tags
       wx.request({
-      url: 'http://localhost:8080/saveData',
+      url: 'https://www.linshuo.top:1998/saveData',
       method:"POST",
       data:JSON.stringify(json_params),
       success(res){
@@ -423,7 +423,7 @@ Page({
     let that = this;
     if(id){
       wx.request({
-        url: 'http://localhost:8080/findById',
+        url: 'https://www.linshuo.top:1998/findById',
         method:"GET",
         data:{id:id,id_:id_},
         success(res){
