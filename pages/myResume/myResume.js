@@ -69,6 +69,7 @@ wx.request({
   method: "GET",
   success(res) {
     console.log(res.data)    
+    if(res.data.openId){
     let workExps_ = res.data.workExps
     for(var i=0;i<workExps_.length;i++){
       workExps_[i].beginDate=workExps_[i].beginDate.replace(/-/g,".")
@@ -76,7 +77,7 @@ wx.request({
     }
     that.setData({
       workExps: workExps_,
-  })
+  })}
 }
 })
 // 获取教育经历信息
@@ -85,15 +86,17 @@ wx.request({
   data:{"id":openid},
   method: "GET",
   success(res) {
-    console.log(res.data)    
+    console.log(res.data)
+    if(res.data.openId){
     let eduExps_ = res.data.eduExps
+
     for(var i=0;i<eduExps_.length;i++){
       eduExps_[i].beginDate=eduExps_[i].beginDate.replace(/-/g,".")
       eduExps_[i].endDate=eduExps_[i].endDate.replace(/-/g,".")
     }
     that.setData({
       eduExps: eduExps_,
-  })
+  })}
 }
 })
 // 获取主修课程信息
@@ -114,6 +117,7 @@ wx.request({
   data:{"id":openid},
   method: "GET",
   success(res) {
+    if(res.data.openId){
     let activities_ = res.data.activities
     for(var i=0;i<activities_.length;i++){
       activities_[i].beginDate= activities_[i].beginDate.replace(/-/g,".")
@@ -122,7 +126,7 @@ wx.request({
     console.log(res.data)    
     that.setData({
       activities: activities_
-  })
+  })}
 }
 })
 // 获取自我评鉴信息

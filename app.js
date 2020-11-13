@@ -1,6 +1,16 @@
 //app.js
 App({
   onLaunch: function () {
+    // (async()=>{
+    //   const p = await new Promise(resolve=>{
+    //     setTimeout(()=>resolve("hello async/await"),3000);;
+
+
+    //   });
+    //   console.log(p);
+    // })();
+
+    
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())

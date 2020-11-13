@@ -52,7 +52,6 @@ Component({
 
     },
     showResume:function(e){
-      console.log(this.data._data.id)
       let curTime = new Date();
       console.log("___________________")
       console.log(this.data._data)
@@ -61,7 +60,7 @@ Component({
         url: 'https://www.linshuo.top:1998/checkSaveOrUpdate',
         data: {
           "openId": that.data.openid,
-          "tarId": that.data._data.id,
+          "tarId": that.data._data.openId,
         },
         method: "GET",
         success(res) {
@@ -71,7 +70,7 @@ Component({
             let params = {
               'openId': that.data.openid,
               'type': 'SeekerInfo',
-              'tarId': that.data._data.id,
+              'tarId': that.data._data.openId,
               'lastVisitTime': curTime.toDateString()+"_"+curTime.toTimeString(),
               'visitNum': res.data+1,
             }
@@ -89,7 +88,7 @@ Component({
             let params = {
               'openId': that.data.openid,
               'type': 'SeekerInfo',
-              'tarId': that.data._data.id,
+              'tarId': that.data._data.openId,
               'lastVisitTime': curTime.toDateString()+"_"+curTime.toTimeString(),
               'visitNum': 1,
             }
@@ -103,14 +102,14 @@ Component({
             })
         }}})
       wx.navigateTo({
-        url: '/pages/myResume/myResume?openid='+this.data._data.id
+        url: '/pages/myResume/myResume?openid='+this.data._data.openId
       })
     },
     copy: function (e) {
       // var id = parseInt(e.currentTarget.id);
       let that = this;
       wx.setClipboardData({
-        data: that.data._data.MainInfo.wxNumber,
+        data: that.data._data.mainInfo.wxNumber,
         success: function (res) {
           wx.showToast({
             title: '复制成功',
@@ -122,7 +121,7 @@ Component({
     call:function(e){
       // var id = parseInt(e.currentTarget.id);
       wx.makePhoneCall({
-        phoneNumber: this.data._data.MainInfo.phoneNumber //仅为示例，并非真实的电话号码
+        phoneNumber: this.data._data.mainInfo.phoneNumber //仅为示例，并非真实的电话号码
       }).catch((e) => {
         // console.log(e)  //用catch(e)来捕获错误{makePhoneCall:fail cancel}
       })
@@ -143,8 +142,8 @@ Component({
 
     _delete:function(){
       console.log("用户openid：",this.data.openid)
-      console.log("信息发布者openid：",this.data._data.id)
-      if(this.data.openid==this.data._data.id){
+      console.log("信息发布者openid：",this.data._data.openId)
+      if(this.data.openid==this.data._data.openId){
       wx.showModal({
         content: '是否删除？',
         showCancel: true,

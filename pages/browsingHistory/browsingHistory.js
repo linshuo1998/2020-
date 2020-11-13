@@ -86,7 +86,6 @@ Page({
       },
       method:"GET",
       success(res){
-        console.log(res)
         for(var i=0;i<30;i++){
           if(res.data[i.toString()]){
             console.log(res.data[i.toString()])
@@ -94,7 +93,7 @@ Page({
             // 最后浏览时间是今天
             if(data__.lastVisitTime.split("_")[0]==(new Date().toDateString())){
               that.setData({
-                today_seekerInfo:that.data.today_seekerInfo.concat(data__.result)
+                today_seekerInfo:that.data.today_seekerInfo.concat(data__.SeekerInfo)
               })
               console.log("TODAY")
               console.log(that.data.today_seekerInfo)
@@ -102,7 +101,7 @@ Page({
             // 非今天，即更早之前
             else {
               that.setData({
-                ago_seekerInfo:that.data.ago_seekerInfo.concat(data__.result)
+                ago_seekerInfo:that.data.ago_seekerInfo.concat(data__.SeekerInfo)
               })
               console.log(that.data.ago_seekerInfo)
             }

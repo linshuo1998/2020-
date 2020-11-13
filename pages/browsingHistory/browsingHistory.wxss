@@ -3,7 +3,9 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  background-color: whitesmoke;
+  /* background-color: whitesmoke; */
+  /* background-image: linear-gradient(#000000,#ffffff);  */
+  background-color: black;
   min-height: 100vh;
 }
 ._page .content{
@@ -14,8 +16,10 @@
   padding-bottom: 20rpx;
   margin: 0 20rpx;
   margin-top: 10rpx;
-  border-bottom: 2rpx solid #999;
-  color:#666;
+  /* border-bottom: 2rpx solid #999; */
+  /* color:#666; */
+  color:#fff;
+  border-bottom: 2rpx solid #fff; 
   font-size: 30rpx;
   font-weight: bold;
 }
@@ -34,7 +38,8 @@
 }
 .fixedFooter .options{
   /* margin-top: 10rpx; */
-  background-color: black;
+  /* background-color: black; */
+  background-color: white;
   display: flex;
   /* justify-content: space-around; */
   justify-content: center;
@@ -50,11 +55,19 @@
   justify-items: center;
 }
 
- .fixedFooter .options .optionClick{
-  background-color: rgba(255,255,255,0.2);
-}
+
  .fixedFooter .options .option text{
   line-height: 88rpx;
-  color:white;
+  /* color:white; */
+  color:#bfbfbf
 
+} 
+
+.fixedFooter .options .optionClick text{
+ 
+  color:black;
+}
+
+.fixedFooter .options .optionClick text{
+background-color: rgba(0,0,0,0.2);
 }

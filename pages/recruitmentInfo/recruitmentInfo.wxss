@@ -1,6 +1,7 @@
 /* pages/RecuritmentInfo/RecuritmentInfo.wxss */
 .container{
   padding-top: 108rpx;
+
 }
 
 .bottom {
@@ -22,12 +23,9 @@
 }
 
 ._body {
-  /* position: fixed; */
-  height: 100%;
-  /* width: 100%; */
-  /* background-color: #07C160; */
-  /* background-color: wheat; */
-
+  min-height: 100vh;
+  background-color: black;
+  /* background-image: linear-gradient(#000000,#ffffff); */
 
 }
 

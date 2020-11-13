@@ -7,7 +7,43 @@ Page({
       url: '/pages/editResume/editResume?openid='+this.data.openid
     })
   },
-
+  showInput: function () {
+    this.setData({
+      inputShowed: true
+    });
+    
+  },
+  hideInput: function () {
+    this.setData({
+      inputVal: "",
+      inputShowed: false
+    });
+  },
+  clearInput: function () {
+    this.setData({
+      inputVal: ""
+    });
+  },
+  inputTyping: function (e) {
+    this.setData({
+      inputVal: e.detail.value
+    });
+    console.log("正在搜索。。",this.data.inputVal)
+    let that = this
+    wx.request({
+      url: 'https://www.linshuo.top:1998/searchSeeker',
+      data:{
+        "words":this.data.inputVal
+      },
+      method:"GET",
+      success(res){
+        console.log(res.data)
+        that.setData({
+          results: res.data
+        })
+      }
+    })
+  },
   /**
    * 页面的初始数据
    */
@@ -51,17 +87,11 @@ Page({
   onShow: function () {
     let that = this;
     wx.request({
-      url: 'https://www.linshuo.top:1998/getAllSeekerInfo',
+      url: 'https://www.linshuo.top:1998/findAllSeekerCard',
       method:"GET",
       success(res){
         console.log(res.data)
         let data_ = res.data
-        // for(var i=0;i<data_.length;i++){
-        //   for(var j=0;j<data_[i].WorkExpInfo.length;j++){
-        //   data_[i].WorkExpInfo[j].beginDate=data_[i].WorkExpInfo[j].replace(/-/g,".")
-        //   data_[i].WorkExpInfo[j].endDate=data_[i].WorkExpInfo[j].endDate.replace(/-/g,".")
-        // }
-        // }
         console.log(data_)
         that.setData({
           results:data_

@@ -2,7 +2,8 @@
 ._page{
   height: 100%;
   /* background-color: #07C160; */
-  /* background-color: black; */
+  /* background-color: black;
+  min-height: 100vh; */
   /* display: flex;
   flex-direction: column; */
   /* height: 100vh; */

@@ -259,6 +259,7 @@
 
 
   <view style="padding:77rpx 0">
-  <button type="warn" plain bindtap="getResume">生成简历</button>
+    <button type="primary" bindtap="getCard">生成名片</button>
+  <button type="warn" plain bindtap="getResume">查看简历</button>
   </view>
 </view>

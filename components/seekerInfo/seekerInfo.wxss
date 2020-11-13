@@ -4,14 +4,15 @@
   /* padding: 20rpx 20rpx; */
   margin: 30rpx 30rpx;
   background-color: whitesmoke;
+  box-shadow:0 0 20rpx #fff;
   /* background-color: #db070f; */
   height: fit-content;
   display: flex;
   flex-direction: column;
-  border-top: 2rpx solid #999;
+  /* border-top: 2rpx solid #999;
   border-bottom: 4rpx solid #999;
   border-left: 4rpx solid #999;
-  border-right: 2rpx solid #999;
+  border-right: 2rpx solid #999; */
   overflow: hidden;
   border-radius: 30rpx;
   position: relative; 

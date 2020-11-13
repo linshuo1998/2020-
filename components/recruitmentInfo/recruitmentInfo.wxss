@@ -2,17 +2,22 @@
 .container{
   padding: 20rpx 40rpx;
   margin: 30rpx 30rpx;
-  background-color: whitesmoke;
-  /* background-color: red; */
+  /* background-color: whitesmoke; */
+  background-image: linear-gradient(#E3FDF5,#FFE6FA);
+  box-shadow:0 0 20rpx #fff;
   height: fit-content;
   display: flex;
   flex-direction: column;
   /* border-bottom: 2rpx solid #999; */
   /* border: 4rpx solid #999; */
+
+/* 
   border-top: 2rpx solid #999;
   border-bottom: 4rpx solid #999;
   border-left: 4rpx solid #999;
-  border-right: 2rpx solid #999;
+  border-right: 2rpx solid #999; */
+
+
   /* overflow: hidden; */
   border-radius: 30rpx;
   position: relative; 
@@ -217,12 +222,12 @@
 .container .delIcon{
   position: absolute;
   top: -20rpx;
-  right: -20rpx;
+  right: -4rpx;
 }
 .container .editIcon{
   position: absolute;
   top: -20rpx;
-  left: -20rpx;
+  left: -4rpx;
 }
 
 @font-face {

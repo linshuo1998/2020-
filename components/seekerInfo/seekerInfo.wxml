@@ -4,20 +4,20 @@
   <view class="container">
   <view class="content">
     <view class="left">
-      <image class="userinfo-avatar" src="{{_data.MainInfo.avatar}}" mode="aspectFill"/>
+      <image class="userinfo-avatar" src="{{_data.mainInfo.avatar}}" mode="aspectFill"/>
     </view>
     <view class="right">
       <view wx:if="{{showAbout}}">
         <view class="show">
-          <text class="name">{{_data.MainInfo.name}}</text>
-          <text class="_text">{{_data.SelfEvaluation}}</text>
+          <text class="name">{{_data.mainInfo.name}}</text>
+          <text class="_text">{{_data.selfEvaluation}}</text>
         </view>
       </view>
       <view wx:if="{{showInfo}}">
         <view class="show">
-          <text class="name">{{_data.MainInfo.name}}</text>
+          <text class="name">{{_data.mainInfo.name}}</text>
           <view class="_text">
-            <block wx:for="{{_data.WorkExpInfo.workExps}}" wx:key="index" wx:for-item="workExp">
+            <block wx:for="{{_data.workExps}}" wx:key="index" wx:for-item="workExp">
               <text space="ensp">{{index+1}}. {{workExp.beginDate}} ~ {{workExp.endDate}}</text>
               <text>{{workExp.work}}</text>
             </block>
@@ -26,11 +26,11 @@
       </view>
       <view wx:if="{{showFunc}}">
         <view class="show">
-          <text class="name">{{_data.MainInfo.name}}</text>
-          <text style="padding-top:10rpx">学号：{{_data.MainInfo.sno}}</text>
-          <text>专业：{{_data.MainInfo.major}}</text>
-          <text>电话：{{_data.MainInfo.phoneNumber}}</text>
-          <text hidden="{{_data.MainInfo.wxNumber?false:true}}">微信：{{_data.MainInfo.wxNumber}}</text>
+          <text class="name">{{_data.mainInfo.name}}</text>
+          <text style="padding-top:10rpx">学号：{{_data.mainInfo.sno}}</text>
+          <text>专业：{{_data.mainInfo.major}}</text>
+          <text>电话：{{_data.mainInfo.phoneNumber}}</text>
+          <text hidden="{{_data.mainInfo.wxNumber?false:true}}">微信：{{_data.mainInfo.wxNumber}}</text>
           <view class="seeDetail">
            <button id="{{index}}" class="btn" type="primary" size="mini" plain bindtap="showResume">查看简历</button>
            <button id="{{index}}" class="btn" type="primary" size="mini" plain bindtap="call">拨打电话</button>

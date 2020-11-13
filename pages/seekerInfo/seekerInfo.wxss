@@ -24,6 +24,8 @@
 }
 .container{
   padding-top: 108rpx;
+  background-color: black;
+  min-height: 100vh;
 }
 
 

@@ -31,6 +31,20 @@ inputTyping: function (e) {
     this.setData({
         inputVal: e.detail.value
     });
+    let that = this
+    wx.request({
+      url: 'https://www.linshuo.top:1998/searchRecruitment',
+      data:{
+        "words":this.data.inputVal
+      },
+      method:"GET",
+      success(res){
+        console.log(res.data)
+        that.setData({
+          rInfos_: res.data
+        })
+      }
+    })
 },
 
   /**
@@ -79,6 +93,29 @@ inputTyping: function (e) {
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+   
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+    wx.getLocation({
+			success: (res) => {
+        console.log('当前定位信息：',res)
+				this.setData({
+					myLoc_: res
+				});
+			}
+    });
+    
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    console.log("openid：",app.globalData.openid)
     let that = this;
     wx.request({
       url: "https://www.linshuo.top:1998/findAll",
@@ -114,28 +151,6 @@ inputTyping: function (e) {
         console.log("openid---->>>",app.globalData.openid)
         this.setData({openid:app.globalData.openid})
       }}
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    wx.getLocation({
-			success: (res) => {
-        console.log('当前定位信息：',res)
-				this.setData({
-					myLoc_: res
-				});
-			}
-    });
-    
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    console.log("openid：",app.globalData.openid)
   },
 
   /**

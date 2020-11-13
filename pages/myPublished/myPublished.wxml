@@ -8,6 +8,6 @@
   </block>
   <!-- <recruitment/> -->
   <view class="bottom" bindtap="clickAddBtn">
-    <image class="addIcon" src="/icons/add.png" />  
+    <image class="addIcon" src="/icons/add(active).png" />  
   </view>
 </view>
