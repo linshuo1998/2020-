@@ -83,4 +83,5 @@
   border-bottom: 8rpx solid #bfbfbf;
   border-left: 8rpx solid #bfbfbf;
   border-right: 2rpx solid #bfbfbf;
+  box-shadow:0 0 20rpx #000;
 }

@@ -33,14 +33,17 @@
   /* padding-top: 20rpx; */
 }
 .userinfo-avatar {
-  width: 128rpx;
+  width: 96rpx;
   height: 128rpx;
+  /* width: 150rpx;
+  height: 200rpx; */
   /* margin: 20rpx; */
   border-radius: 20rpx;
   border-top: 2rpx solid #999;
   border-bottom: 4rpx solid #999;
   border-left: 4rpx solid #999;
   border-right: 2rpx solid #999;
+  box-shadow:0 0 20rpx #547d9d;
 }
 
 .container .content .right{

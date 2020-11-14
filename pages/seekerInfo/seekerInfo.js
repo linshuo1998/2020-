@@ -33,7 +33,7 @@ Page({
     wx.request({
       url: 'https://www.linshuo.top:1998/searchSeeker',
       data:{
-        "words":this.data.inputVal
+        "words":that.data.inputVal
       },
       method:"GET",
       success(res){
@@ -90,6 +90,7 @@ Page({
       url: 'https://www.linshuo.top:1998/findAllSeekerCard',
       method:"GET",
       success(res){
+        console.log("触发了onShow")
         console.log(res.data)
         let data_ = res.data
         console.log(data_)

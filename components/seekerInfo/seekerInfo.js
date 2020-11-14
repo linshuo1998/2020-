@@ -109,7 +109,7 @@ Component({
       // var id = parseInt(e.currentTarget.id);
       let that = this;
       wx.setClipboardData({
-        data: that.data._data.mainInfo.wxNumber,
+        data: that.data._data.wxNumber,
         success: function (res) {
           wx.showToast({
             title: '复制成功',
@@ -121,7 +121,7 @@ Component({
     call:function(e){
       // var id = parseInt(e.currentTarget.id);
       wx.makePhoneCall({
-        phoneNumber: this.data._data.mainInfo.phoneNumber //仅为示例，并非真实的电话号码
+        phoneNumber: this.data._data.phoneNumber //仅为示例，并非真实的电话号码
       }).catch((e) => {
         // console.log(e)  //用catch(e)来捕获错误{makePhoneCall:fail cancel}
       })

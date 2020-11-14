@@ -16,6 +16,17 @@ Page({
       index: e.detail.value
     })
   },
+  bindPeopleChange:function(e){
+    this.setData({
+      people_index: e.detail.value
+    })
+  },
+  bindRegionChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      region: e.detail.value
+    })
+  },
   bindDateChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
@@ -417,8 +428,12 @@ Page({
     wx.chooseImage({
       count: 1, // 最多可以选择的图片张数，默认9
       sizeType: ['compressed'], // original 原图，compressed 压缩图，默认二者都有
-      sourceType: ['album', 'camera'], // album 从相册选图，camera 使用相机，默认二者都有
+      sourceType: ['album'], // album 从相册选图，camera 使用相机，默认二者都有
       success: function (res) {
+        
+        var tempFilesSize = res.tempFiles[0].size;  //获取图片的大小，单位B
+        console.log("当前图片大小：",tempFilesSize)
+        if(tempFilesSize <= 200000){   //图片小于或者等于200K时 可以执行获取图片
         var avatar = res.tempFilePaths;
         //将用户选择的图片转换为base64字符串存于数据库。
         let imgUrl = 'data:image/png;base64,' + wx.getFileSystemManager().readFileSync(res.tempFilePaths[0], "base64");
@@ -427,6 +442,13 @@ Page({
           avatar: imgUrl
         })
       }
+      else{
+        wx.showToast({
+          title: '图像大于200KB',
+          icon:'none'
+        })
+      }
+    }
     })
 
   },
@@ -446,6 +468,20 @@ Page({
     let phoneNumber = e.detail.value.phoneNumber
     let wxNumber = e.detail.value.wxNumber
     let avatar = this.data.avatar
+    
+    console.log(gender)
+    console.log(people)
+    console.log(nativePlace)
+    // 匹配手机号
+    var reg =/^0?1[3|4|5|6|7|8][0-9]\d{8}$/;
+
+    if(phoneNumber&&!reg.test(phoneNumber)){
+      wx.showToast({
+        title: '【手机号码】格式错误！',
+        icon: 'none'
+      })
+      return
+    }
 
     let this_mainInfo = this.data.mainInfo_
     this_mainInfo.sno = sno
@@ -465,7 +501,7 @@ Page({
       "mainInfo_": this_mainInfo
     })
     console.log(this.data.mainInfo_)
-
+    
     if (this.data.mainInfo_update) {
       console.log(this.data.mainInfo)
       console.log(JSON.stringify(this.data.mainInfo_))
@@ -1452,7 +1488,7 @@ Page({
             method: "GET",
             success(res) {
               if (res.data.openId) {
-                if (res.data.sno && res.data.name && res.data.major) {
+                if (res.data.sno && res.data.name && res.data.major && res.data.avatar) {
                   _mainInfo = res.data
                   wx.request({
                     url: 'https://www.linshuo.top:1998/findWorkExpInfo',
@@ -1490,7 +1526,14 @@ Page({
                                 'openId': that.data.openid,
                                 'mainInfo': _mainInfo,
                                 'selfEvaluation': _selfEvaluation,
-                                'workExps': _workExps
+                                'workExps': _workExps,
+                                'sno':_mainInfo.sno,
+                                'name':_mainInfo.name,
+                                'gender':_mainInfo.gender,
+                                'major':_mainInfo.major,
+                                'phoneNumber':_mainInfo.phoneNumber,
+                                'wxNumber': _mainInfo.wxNumber,
+                                'avatar': _mainInfo.avatar
                               },
                               method: "POST",
                               success(res) {
@@ -1542,7 +1585,7 @@ Page({
             method: "GET",
             success(res) {
               if (res.data.openId) {
-                if (res.data.sno && res.data.name && res.data.major) {
+                if (res.data.sno && res.data.name && res.data.major && res.data.avatar) {
                   _mainInfo = res.data
                   wx.request({
                     url: 'https://www.linshuo.top:1998/findWorkExpInfo',
@@ -1580,7 +1623,14 @@ Page({
                                 'openId': that.data.openid,
                                 'mainInfo': _mainInfo,
                                 'selfEvaluation': _selfEvaluation,
-                                'workExps': _workExps
+                                'workExps': _workExps,
+                                'sno':_mainInfo.sno,
+                                'name':_mainInfo.name,
+                                'gender':_mainInfo.gender,
+                                'major':_mainInfo.major,
+                                'phoneNumber':_mainInfo.phoneNumber,
+                                'wxNumber': _mainInfo.wxNumber,
+                                'avatar': _mainInfo.avatar
                               },
                               method: "POST",
                               success(res) {
@@ -1638,6 +1688,10 @@ Page({
   data: {
     array: ['男', '女'],
     index: 0,
+    people:["汉族","蒙古族","回族","藏族","维吾尔族","苗族","彝族","壮族","布依族","朝鲜族","满族","侗族","瑶族","白族","土家族","哈尼族","哈萨克族","傣族","黎族","傈僳族","佤族","畲族","高山族","拉祜族","水族","东乡族","纳西族","景颇族","柯尔克孜族","土族","达斡尔族","仫佬族","羌族","布朗族","撒拉族","毛难族","仡佬族","锡伯族","阿昌族","普米族","塔吉克族","怒族","乌孜别克族","俄罗斯族","鄂温克族","崩龙族","保安族","裕固族","京族","塔塔尔族","独龙族","鄂伦春族","赫哲族","门巴族","珞巴族","基诺族","其他"],
+    people_index: 0,
+    region: ['广东省', '湛江市', '赤坎区'],
+    customItem: '全部',
     startDate: "1990-01-01",
     curDate: curDate,
     date: "1990-01-01",
@@ -1725,13 +1779,129 @@ Page({
               index: 1
             })
           }
+
           if (res.data.avatar) {
             that.setData({
               avatar: res.data.avatar
             })
           }
+          if (res.data.people == "汉族"){
+            that.setData({people_index:0})}
+            if (res.data.people == "蒙古族"){
+            that.setData({people_index:1})}
+            if (res.data.people == "回族"){
+            that.setData({people_index:2})}
+            if (res.data.people == "藏族"){
+            that.setData({people_index:3})}
+            if (res.data.people == "维吾尔族"){
+            that.setData({people_index:4})}
+            if (res.data.people == "苗族"){
+            that.setData({people_index:5})}
+            if (res.data.people == "彝族"){
+            that.setData({people_index:6})}
+            if (res.data.people == "壮族"){
+            that.setData({people_index:7})}
+            if (res.data.people == "布依族"){
+            that.setData({people_index:8})}
+            if (res.data.people == "朝鲜族"){
+            that.setData({people_index:9})}
+            if (res.data.people == "满族"){
+            that.setData({people_index:10})}
+            if (res.data.people == "侗族"){
+            that.setData({people_index:11})}
+            if (res.data.people == "瑶族"){
+            that.setData({people_index:12})}
+            if (res.data.people == "白族"){
+            that.setData({people_index:13})}
+            if (res.data.people == "土家族"){
+            that.setData({people_index:14})}
+            if (res.data.people == "哈尼族"){
+            that.setData({people_index:15})}
+            if (res.data.people == "哈萨克族"){
+            that.setData({people_index:16})}
+            if (res.data.people == "傣族"){
+            that.setData({people_index:17})}
+            if (res.data.people == "黎族"){
+            that.setData({people_index:18})}
+            if (res.data.people == "傈僳族"){
+            that.setData({people_index:19})}
+            if (res.data.people == "佤族"){
+            that.setData({people_index:20})}
+            if (res.data.people == "畲族"){
+            that.setData({people_index:21})}
+            if (res.data.people == "高山族"){
+            that.setData({people_index:22})}
+            if (res.data.people == "拉祜族"){
+            that.setData({people_index:23})}
+            if (res.data.people == "水族"){
+            that.setData({people_index:24})}
+            if (res.data.people == "东乡族"){
+            that.setData({people_index:25})}
+            if (res.data.people == "纳西族"){
+            that.setData({people_index:26})}
+            if (res.data.people == "景颇族"){
+            that.setData({people_index:27})}
+            if (res.data.people == "柯尔克孜族"){
+            that.setData({people_index:28})}
+            if (res.data.people == "土族"){
+            that.setData({people_index:29})}
+            if (res.data.people == "达斡尔族"){
+            that.setData({people_index:30})}
+            if (res.data.people == "仫佬族"){
+            that.setData({people_index:31})}
+            if (res.data.people == "羌族"){
+            that.setData({people_index:32})}
+            if (res.data.people == "布朗族"){
+            that.setData({people_index:33})}
+            if (res.data.people == "撒拉族"){
+            that.setData({people_index:34})}
+            if (res.data.people == "毛难族"){
+            that.setData({people_index:35})}
+            if (res.data.people == "仡佬族"){
+            that.setData({people_index:36})}
+            if (res.data.people == "锡伯族"){
+            that.setData({people_index:37})}
+            if (res.data.people == "阿昌族"){
+            that.setData({people_index:38})}
+            if (res.data.people == "普米族"){
+            that.setData({people_index:39})}
+            if (res.data.people == "塔吉克族"){
+            that.setData({people_index:40})}
+            if (res.data.people == "怒族"){
+            that.setData({people_index:41})}
+            if (res.data.people == "乌孜别克族"){
+            that.setData({people_index:42})}
+            if (res.data.people == "俄罗斯族"){
+            that.setData({people_index:43})}
+            if (res.data.people == "鄂温克族"){
+            that.setData({people_index:44})}
+            if (res.data.people == "崩龙族"){
+            that.setData({people_index:45})}
+            if (res.data.people == "保安族"){
+            that.setData({people_index:46})}
+            if (res.data.people == "裕固族"){
+            that.setData({people_index:47})}
+            if (res.data.people == "京族"){
+            that.setData({people_index:48})}
+            if (res.data.people == "塔塔尔族"){
+            that.setData({people_index:49})}
+            if (res.data.people == "独龙族"){
+            that.setData({people_index:50})}
+            if (res.data.people == "鄂伦春族"){
+            that.setData({people_index:51})}
+            if (res.data.people == "赫哲族"){
+            that.setData({people_index:52})}
+            if (res.data.people == "门巴族"){
+            that.setData({people_index:53})}
+            if (res.data.people == "珞巴族"){
+            that.setData({people_index:54})}
+            if (res.data.people == "基诺族"){
+            that.setData({people_index:55})}
+            if (res.data.people == "其他"){
+            that.setData({people_index:56})}
           that.setData({
-            date: res.data.birthday
+            date: res.data.birthday,
+            region: res.data.nativePlace
           })
         }
 

@@ -35,6 +35,7 @@
   display: flex;
   flex-direction: column;
   padding-bottom: 20rpx;
+  max-width: 45%;
 
   
 }
@@ -90,10 +91,10 @@
   padding:10rpx 0;
 }
 .page .content .left .leftBottom .items ._content{
-  font-size: 20rpx;
+  font-size: 18rpx;
   display: flex;
   flex-direction: column;
-  line-height: 40rpx;
+  line-height: 30rpx;
   padding: 6rpx 0;
 }
 
@@ -118,10 +119,10 @@
   padding:10rpx 0;
 }
 .page .content .right .items ._content{
-  font-size: 20rpx;
+  font-size: 18rpx;
   display: flex;
   flex-direction: column;
-  line-height: 40rpx;
+  line-height: 30rpx;
   padding: 6rpx 0;
 }
 
@@ -138,12 +139,14 @@
 .userinfo-avatar {
   width: 200rpx;
   height: 200rpx;
-  margin: 20rpx;
+  /* margin: 20rpx; */
   border-radius: 50%;
   border-top: 2rpx solid black;
   border-bottom: 4rpx solid black;
   border-left: 4rpx solid black;
   border-right: 2rpx solid black;
+  box-shadow:0 0 20rpx #000;
+  margin: 20rpx auto;
 }
 
 

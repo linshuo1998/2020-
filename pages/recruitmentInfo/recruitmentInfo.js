@@ -31,6 +31,7 @@ inputTyping: function (e) {
     this.setData({
         inputVal: e.detail.value
     });
+    console.log("搜索了",this.data.inputVal)
     let that = this
     wx.request({
       url: 'https://www.linshuo.top:1998/searchRecruitment',
@@ -39,6 +40,7 @@ inputTyping: function (e) {
       },
       method:"GET",
       success(res){
+        
         console.log(res.data)
         that.setData({
           rInfos_: res.data

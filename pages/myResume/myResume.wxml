@@ -4,7 +4,7 @@
   <view class="content">
     <view class="left">
       <view class="leftTop">
-        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{mainInfo.avatar}}" mode="cover" bindtap="chooseImg"></image>
+        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{mainInfo.avatar}}" mode="aspectFill"></image>
         <view class="_text">
           <text class="name">{{mainInfo.name}}</text>
           <text space="emsp" class="prefix">性  别：<text class="suffix">{{mainInfo.gender}}</text></text>
@@ -54,7 +54,7 @@
           <text class="iconfont icon-drxx20"></text>
           <text space="ensp"> 工作经历</text>
         </view>
-        <scroll-view scroll-y style="height:220rpx">
+        <scroll-view scroll-y style="height:290rpx">
         <view class="_content"> 
           <block wx:for="{{workExps}}" wx:for-item="workExp" wx:key="index">
             <text space="ensp">{{index+1}}. {{workExp.beginDate}}~{{workExp.endDate}}</text>
@@ -69,7 +69,7 @@
           <text class="iconfont icon-jiaoyu"></text>
           <text space="ensp"> 教育经历</text>
         </view>
-        <scroll-view scroll-y style="height:220rpx">
+        <scroll-view scroll-y style="height:200rpx">
         <view class="_content"> 
           <block wx:for="{{eduExps}}" wx:for-item="eduExp" wx:key="index">
             <text space="emsp">{{eduExp.beginDate}}~{{eduExp.endDate}} {{eduExp.school}}</text>
@@ -87,7 +87,7 @@
           <text class="iconfont icon-xiaoyuan"></text>
           <text space="ensp"> 校园活动</text>
         </view>
-        <scroll-view scroll-y style="height:220rpx">
+        <scroll-view scroll-y style="height:200rpx">
         <view class="_content"> 
           <block wx:for="{{activities}}" wx:for-item="activity" wx:key="index">
             <text space="ensp">{{index+1}}. {{activity.beginDate}}~{{activity.endDate}}</text>
@@ -103,7 +103,7 @@
           <text class="iconfont icon-pingjia"></text>
           <text space="ensp"> 自我评价</text>
         </view>
-        <scroll-view scroll-y style="height:220rpx">
+        <scroll-view scroll-y style="height:200rpx">
         <view class="_content"> 
           <text space="emsp">{{selfEvaluation}}</text>
         </view>

@@ -32,8 +32,10 @@ Page({
       method: "GET",
       success(res) {
         console.log(res.data)
+        let _data_ = res.data
+        _data_.nativePlace = _data_.nativePlace[0]+ _data_.nativePlace[1]
         that.setData({
-          mainInfo: res.data,
+          mainInfo:_data_
       })
     }
   })
